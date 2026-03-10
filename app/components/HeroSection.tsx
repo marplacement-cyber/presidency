@@ -99,21 +99,21 @@ export function HeroSection() {
                   <p className="text-xl md:text-2xl font-heading text-white">
                     150+
                   </p>
-                  <p>Programs</p>
+                  <p className="text-white">Programs</p>
                 </div>
 
                 <div>
                   <p className="text-xl md:text-2xl font-heading text-white">
                     300+
                   </p>
-                  <p>Recruiters</p>
+                  <p className="text-white">Recruiters</p>
                 </div>
 
                 <div>
                   <p className="text-xl md:text-2xl font-heading text-white">
                     50K+
                   </p>
-                  <p>Students</p>
+                  <p className="text-white">Students</p>
                 </div>
               </div>
             </div>

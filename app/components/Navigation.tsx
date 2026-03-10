@@ -1,7 +1,7 @@
 "use client";
 
-import { Menu, X, Search } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { useState, useRef } from "react";
 
 /* ---------------- DATA ---------------- */
 
@@ -16,25 +16,21 @@ const studyPrograms = [
 
 const schools = [
   "Computer Science & Engineering",
-  "Engineering",
   "Information Science",
+  "Mechanical Engineering",
+  "Civil Engineering",
   "Management",
   "Commerce",
   "Law",
   "Design",
   "Media Studies",
-  "Liberal Arts & Sciences",
-  "Allied Health Sciences",
 ];
 
 const mobileLinks = [
-  "Study",
-  "Schools",
   "Campus Life",
   "Life in Bangalore",
   "International",
   "About",
-  "FAQ",
   "Contact",
 ];
 
@@ -43,6 +39,31 @@ const mobileLinks = [
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
+  const [mobileSubMenu, setMobileSubMenu] = useState<string | null>(null);
+
+  const hoverTimeout = useRef<any>(null);
+
+  /* Hover delay handlers */
+
+  const handleMouseEnter = (menu: string) => {
+    clearTimeout(hoverTimeout.current);
+    hoverTimeout.current = setTimeout(() => {
+      setActiveMenu(menu);
+    }, 200);
+  };
+
+  const handleMouseLeave = () => {
+    clearTimeout(hoverTimeout.current);
+    hoverTimeout.current = setTimeout(() => {
+      setActiveMenu("");
+    }, 250);
+  };
+
+  /* Mobile submenu toggle */
+
+  const toggleMobileSubMenu = (menu: string) => {
+    setMobileSubMenu(mobileSubMenu === menu ? null : menu);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
@@ -50,7 +71,7 @@ export function Navigation() {
 
       <div className="md:hidden bg-white border-b shadow-sm">
         <div className="flex items-center justify-between px-4 py-3">
-          {/* Logo + Text */}
+          {/* Logo */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0f1e3d] to-[#0bb5b5] flex items-center justify-center text-white font-bold">
               P
@@ -67,43 +88,35 @@ export function Navigation() {
           </div>
 
           {/* Hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-[#0f1e3d]"
-          >
+          <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-
-        {/* Gradient line */}
-        {/* <div className="h-2 bg-gradient-to-r from-[#0f1e3d] to-[#0bb5b5]" /> */}
       </div>
 
       {/* ================= DESKTOP NAV ================= */}
 
       <div className="hidden md:block bg-[#1e3a5f] border-b border-gray-700">
-        <div className=" mx-auto px-6">
+        <div className="mx-auto px-6">
           <div className="flex items-center justify-between h-[88px]">
             {/* Logo */}
-            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow-sm flex-shrink-0">
+            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow-sm">
               <img
                 src="/img/inner-logo.png"
                 alt="Presidency University"
-                className="h-14 lg:h-16 w-auto object-contain"
+                className="h-14"
               />
             </div>
 
             {/* Desktop Menu */}
             <div className="flex items-center gap-10 text-white">
-              {/* STUDY DROPDOWN */}
+              {/* STUDY */}
               <div
                 className="relative"
-                onMouseEnter={() => setActiveMenu("study")}
-                onMouseLeave={() => setActiveMenu("")}
+                onMouseEnter={() => handleMouseEnter("study")}
+                onMouseLeave={handleMouseLeave}
               >
-                <button className="hover:text-orange-400 transition">
-                  Study
-                </button>
+                <button className="hover:text-orange-400">Study</button>
 
                 {activeMenu === "study" && (
                   <div className="absolute top-full left-0 mt-2 w-[320px] bg-[#0f2f4a] rounded-lg shadow-xl p-6">
@@ -111,7 +124,7 @@ export function Navigation() {
                       {studyPrograms.map((item) => (
                         <li
                           key={item}
-                          className="hover:text-white cursor-pointer transition"
+                          className="hover:text-white cursor-pointer"
                         >
                           {item}
                         </li>
@@ -121,98 +134,56 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* SCHOOLS MEGA MENU */}
+              {/* SCHOOLS */}
               <div
                 className=""
-                onMouseEnter={() => setActiveMenu("schools")}
-                onMouseLeave={() => setActiveMenu("")}
+                onMouseEnter={() => handleMouseEnter("schools")}
+                onMouseLeave={handleMouseLeave}
               >
-                <button className="hover:text-orange-400 transition">
-                  Schools
-                </button>
+                <button className="hover:text-orange-400">Schools</button>
 
                 {activeMenu === "schools" && (
-                  <div className="absolute top-full left-0 w-full bg-gradient-to-r from-[#0f2f4a] to-[#123a5a] shadow-[0_25px_80px_rgba(0,0,0,0.4)] text-white">
-                    <div className="max-w-7xl mx-auto grid grid-cols-4 gap-12 px-10 py-12">
-                      {/* Sidebar */}
-                      <div className="border-r border-white/10 pr-6">
-                        <h3 className="text-lg font-semibold mb-4">Schools</h3>
-
-                        <ul className="space-y-3 text-sm text-gray-300">
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            All Schools
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Academic Calendar
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Research Centers
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Innovation Labs
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* Engineering */}
+                  <div className="absolute top-full left-0 w-screen bg-gradient-to-r from-[#0f2f4a] to-[#123a5a] shadow-xl">
+                    <div className="max-w-7xl mx-auto grid grid-cols-3 gap-10 px-10 py-10 text-white">
                       <div>
                         <h4 className="font-semibold mb-4">Engineering</h4>
-
-                        <ul className="space-y-3 text-sm text-gray-300">
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Computer Science & Engineering
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Information Science
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Mechanical Engineering
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Civil Engineering
-                          </li>
+                        <ul className="space-y-2 text-gray-300">
+                          {schools.slice(0, 4).map((item) => (
+                            <li
+                              key={item}
+                              className="hover:text-orange-400 cursor-pointer"
+                            >
+                              {item}
+                            </li>
+                          ))}
                         </ul>
                       </div>
 
-                      {/* Business */}
                       <div>
-                        <h4 className="font-semibold mb-4">
-                          Business & Commerce
-                        </h4>
-
-                        <ul className="space-y-3 text-sm text-gray-300">
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Management
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Commerce
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Economics
-                          </li>
+                        <h4 className="font-semibold mb-4">Business</h4>
+                        <ul className="space-y-2 text-gray-300">
+                          {schools.slice(4, 6).map((item) => (
+                            <li
+                              key={item}
+                              className="hover:text-orange-400 cursor-pointer"
+                            >
+                              {item}
+                            </li>
+                          ))}
                         </ul>
                       </div>
 
-                      {/* Other Schools */}
                       <div>
                         <h4 className="font-semibold mb-4">Other Schools</h4>
-
-                        <ul className="space-y-3 text-sm text-gray-300">
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Law
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Design
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Media Studies
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Liberal Arts & Sciences
-                          </li>
-                          <li className="hover:text-orange-400 cursor-pointer">
-                            Allied Health Sciences
-                          </li>
+                        <ul className="space-y-2 text-gray-300">
+                          {schools.slice(6).map((item) => (
+                            <li
+                              key={item}
+                              className="hover:text-orange-400 cursor-pointer"
+                            >
+                              {item}
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>
@@ -220,24 +191,18 @@ export function Navigation() {
                 )}
               </div>
 
-              <a className="hover:text-orange-400 transition">Campus Life</a>
-
-              <a className="hover:text-orange-400 transition">
-                Life in Bangalore
-              </a>
-
-              <a className="hover:text-orange-400 transition">International</a>
-
-              <a className="hover:text-orange-400 transition">About</a>
-
-              <a className="hover:text-orange-400 transition">Contact</a>
+              <a className="hover:text-orange-400">Campus Life</a>
+              <a className="hover:text-orange-400">Life in Bangalore</a>
+              <a className="hover:text-orange-400">International</a>
+              <a className="hover:text-orange-400">About</a>
+              <a className="hover:text-orange-400">Contact</a>
             </div>
 
             {/* Right side */}
             <div className="flex items-center gap-6">
-              <Search className="text-white hover:text-orange-400 cursor-pointer" />
+              <Search className="text-white cursor-pointer hover:text-orange-400" />
 
-              <button className="bg-orange-500 text-white px-6 py-2.5 rounded-md hover:bg-orange-600 transition">
+              <button className="bg-orange-500 px-6 py-2 rounded-md hover:bg-orange-600">
                 APPLY NOW
               </button>
             </div>
@@ -248,17 +213,57 @@ export function Navigation() {
       {/* ================= MOBILE MENU ================= */}
 
       {menuOpen && (
-        <div className="md:hidden bg-[#0f1e3d] text-white px-6 py-6 space-y-5 shadow-lg">
-          {mobileLinks.map((item) => (
-            <a
-              key={item}
-              className="block text-lg hover:text-orange-400 transition"
+        <div className="md:hidden bg-[#0f1e3d] text-white px-6 py-6 space-y-4">
+          {/* STUDY */}
+          <div>
+            <button
+              onClick={() => toggleMobileSubMenu("study")}
+              className="flex justify-between w-full text-lg"
             >
-              {item}
+              Study
+              <ChevronDown size={20} />
+            </button>
+
+            {mobileSubMenu === "study" && (
+              <ul className="mt-3 space-y-2 pl-4 text-gray-300">
+                {studyPrograms.map((item) => (
+                  <li key={item} className="hover:text-orange-400">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* SCHOOLS */}
+          <div>
+            <button
+              onClick={() => toggleMobileSubMenu("schools")}
+              className="flex justify-between w-full text-lg"
+            >
+              Schools
+              <ChevronDown size={20} />
+            </button>
+
+            {mobileSubMenu === "schools" && (
+              <ul className="mt-3 space-y-2 pl-4 text-gray-300">
+                {schools.map((item) => (
+                  <li key={item} className="hover:text-orange-400">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Other Links */}
+          {mobileLinks.map((link) => (
+            <a key={link} className="block text-lg hover:text-orange-400">
+              {link}
             </a>
           ))}
 
-          <button className="bg-orange-500 w-full py-3 rounded-md mt-4 hover:bg-orange-600 transition">
+          <button className="bg-orange-500 w-full py-3 rounded-md hover:bg-orange-600">
             APPLY NOW
           </button>
         </div>

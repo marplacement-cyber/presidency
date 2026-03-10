@@ -95,7 +95,7 @@ min-h-[260px] md:${program.height}`}
             >
               {/* IMAGE */}
               <div
-                className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-top transition duration-700 group-hover:scale-110"
                 style={{ backgroundImage: `url(${program.image})` }}
               />
 
