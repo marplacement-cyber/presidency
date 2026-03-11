@@ -7,19 +7,38 @@ const slides = [
   {
     title: "YOUR WORLD-CLASS EDUCATION",
     highlight: "STARTS IN BANGALORE",
-    desc: "Study at Presidency University, one of India’s leading private universities located in the heart of Bangalore — the Silicon Valley of India.",
+    desc: (
+      <>
+        Study at Presidency University, one of India’s leading private
+        universities
+        <br />
+        located in the heart of Bangalore — the Silicon Valley of India.
+      </>
+    ),
     image: "/img/slider/2.jpg",
   },
   {
     title: "A GLOBAL CAMPUS FOR",
     highlight: "INTERNATIONAL STUDENTS",
-    desc: "Join a vibrant community of students from around the world and experience world-class teaching and global opportunities.",
+    desc: (
+      <>
+        Join a vibrant community of students from around the world
+        <br />
+        and experience world-class teaching and global opportunities.
+      </>
+    ),
     image: "/img/slider/1.jpg",
   },
   {
     title: "BUILD YOUR FUTURE IN",
     highlight: "INDIA'S TECH CAPITAL",
-    desc: "Located in Bangalore — home to global companies like Amazon, Google, Microsoft and Infosys.",
+    desc: (
+      <>
+        Located in Bangalore — home to global companies
+        <br />
+        like Amazon, Google, Microsoft and Infosys.
+      </>
+    ),
     image: "/img/slider/1.jpg",
   },
 ];
@@ -65,11 +84,11 @@ export function HeroSection() {
             <div className="max-w-xl md:max-w-3xl text-white">
               {/* Tag */}
               <span className="uppercase tracking-widest text-xs md:text-sm text-orange-400">
-                Admissions Open 2025
+                Admissions Open 2026
               </span>
 
               {/* Heading */}
-              <h1 className="mt-3 font-heading text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight">
+              <h1 className="mt-3 font-heading text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-tight">
                 {slide.title}
                 <br />
                 <span className="text-orange-400">{slide.highlight}</span>

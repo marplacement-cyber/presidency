@@ -72,7 +72,7 @@ export function AmenitiesSection() {
             <span className="uppercase tracking-wider">Campus Facilities</span>
           </div>
 
-          <h2 className="text-2xl md:text-5xl mb-6">
+          <h2 className="text-2xl md:text-4xl mb-6">
             A CAMPUS DESIGNED FOR
             <br />
             <span className="text-[#ff8c42]">

@@ -12,7 +12,7 @@ export function ProgramSearch() {
           <div className="grid md:grid-cols-4 gap-4 items-end">
             {/* TITLE */}
             <div>
-              <h2 className="text-white text-xl md:text-2xl font-semibold">
+              <h2 className="text-white text-xl md:text-2xl ">
                 Find Your Program
               </h2>
               <p className="text-blue-100 text-sm mt-1">

@@ -79,7 +79,7 @@ export function ProgramsMasonrySection() {
             Academic Programs
           </span>
 
-          <h2 className="text-2xl md:text-5xl text-[#1e3a5f]">
+          <h2 className="text-2xl md:text-4xl text-[#1e3a5f]">
             DISCOVER OUR
             <span className="block text-[#ff8c42]">ACADEMIC SCHOOLS</span>
           </h2>
@@ -100,11 +100,11 @@ min-h-[260px] md:${program.height}`}
               />
 
               {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1e3a5f]/80 via-[#1e3a5f]/80 to-transparent"></div>
 
               {/* CONTENT */}
               <div className="absolute bottom-0 p-6 text-white">
-                <h3 className="text-xl  mb-2">{program.title}</h3>
+                <h3 className="text-xl  mb-2 ">{program.title}</h3>
 
                 <p className="text-sm text-white/80 mb-4">{program.desc}</p>
 

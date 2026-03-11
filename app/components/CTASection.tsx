@@ -29,7 +29,7 @@ export function CTASection() {
         </span>
 
         {/* HEADING */}
-        <h2 className="text-2xl md:text-5xl text-[#1e3a5f] mb-6 leading-tight">
+        <h2 className="text-2xl md:text-4xl text-[#1e3a5f] mb-6 leading-tight">
           {ctaContent.title}
           <span className="block text-[#ff8c42]">{ctaContent.highlight}</span>
         </h2>

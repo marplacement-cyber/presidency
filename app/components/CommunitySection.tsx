@@ -33,7 +33,7 @@ export function CommunitySection() {
             <span className="uppercase tracking-wider">Student Life</span>
           </div>
 
-          <h2 className="text-2xl md:text-5xl text-[#1e3a5f] mb-6">
+          <h2 className="text-2xl md:text-4xl text-[#1e3a5f] mb-6">
             A VIBRANT AND
             <br />
             <span className="text-[#ff8c42]">ENGAGING CAMPUS</span>

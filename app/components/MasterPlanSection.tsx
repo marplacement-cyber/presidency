@@ -51,7 +51,7 @@ export function MasterPlanSection() {
               <span className="uppercase tracking-wider">Campus Overview</span>
             </div>
 
-            <h2 className="text-2xl md:text-5xl text-[#1e3a5f] mb-6 leading-tight">
+            <h2 className="text-2xl md:text-4xl text-[#1e3a5f] mb-6 leading-tight">
               STUDY ON A
               <br />
               <span className="text-[#ff8c42]">

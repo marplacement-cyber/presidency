@@ -3,6 +3,7 @@
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { useState, useRef } from "react";
 
+import { Dialog } from "@/components/ui/dialog";
 /* ---------------- DATA ---------------- */
 
 const studyPrograms = [
@@ -40,7 +41,8 @@ export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
   const [mobileSubMenu, setMobileSubMenu] = useState<string | null>(null);
-
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [applyOpen, setApplyOpen] = useState(false);
   const hoverTimeout = useRef<any>(null);
 
   /* Hover delay handlers */
@@ -104,7 +106,7 @@ export function Navigation() {
               <img
                 src="/img/inner-logo.png"
                 alt="Presidency University"
-                className="h-14"
+                className="h-10"
               />
             </div>
 
@@ -200,9 +202,15 @@ export function Navigation() {
 
             {/* Right side */}
             <div className="flex items-center gap-6">
-              <Search className="text-white cursor-pointer hover:text-orange-400" />
+              <Search
+                onClick={() => setSearchOpen(true)}
+                className="text-white cursor-pointer hover:text-orange-400"
+              />
 
-              <button className="bg-orange-500 px-6 py-2 rounded-md hover:bg-orange-600">
+              <button
+                onClick={() => setApplyOpen(true)}
+                className="bg-[#ff8c42] hover:bg-[#e67a32] px-6 md:px-8 py-3 md:py-4 rounded-full flex items-center justify-center gap-2 transition text-white"
+              >
                 APPLY NOW
               </button>
             </div>
@@ -266,6 +274,114 @@ export function Navigation() {
           <button className="bg-orange-500 w-full py-3 rounded-md hover:bg-orange-600">
             APPLY NOW
           </button>
+        </div>
+      )}
+      {searchOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-40 z-50">
+          <div className="bg-white w-[500px] rounded-lg p-6 shadow-xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">Search</h3>
+              <button onClick={() => setSearchOpen(false)}>
+                <X />
+              </button>
+            </div>
+
+            <input
+              type="text"
+              placeholder="Search programmes, schools, campus..."
+              className="w-full border px-4 py-3 rounded-md outline-none"
+            />
+
+            <button className="mt-4 bg-[#1e3a5f] text-white px-6 py-2 rounded-md">
+              Search
+            </button>
+          </div>
+        </div>
+      )}
+      {searchOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-40 z-50">
+          <div className="bg-white w-[500px] rounded-lg p-6 shadow-xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg ">Search</h3>
+              <button onClick={() => setSearchOpen(false)}>
+                <X />
+              </button>
+            </div>
+
+            <input
+              type="text"
+              placeholder="Search programmes, schools, campus..."
+              className="w-full border px-4 py-3 rounded-md outline-none"
+            />
+
+            <button className="mt-4 bg-[#1e3a5f] text-white px-6 py-2 rounded-md">
+              Search
+            </button>
+          </div>
+        </div>
+      )}
+      {applyOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white w-[600px] rounded-xl p-8 shadow-xl">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl  text-[#1e3a5f]">
+                International Student Enquiry
+              </h2>
+
+              <button onClick={() => setApplyOpen(false)}>
+                <X />
+              </button>
+            </div>
+
+            <form className="space-y-4">
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="w-full border px-4 py-3 rounded-md"
+              />
+
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="w-full border px-4 py-3 rounded-md"
+              />
+
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full border px-4 py-3 rounded-md"
+              />
+
+              <select className="w-full border px-4 py-3 rounded-md">
+                <option>Select Programme</option>
+                <option>Undergraduate</option>
+                <option>Postgraduate</option>
+                <option>PhD</option>
+              </select>
+
+              <textarea
+                placeholder="Your message"
+                className="w-full border px-4 py-3 rounded-md"
+              />
+
+              {/* Document Upload */}
+
+              <div>
+                <label className="block text-sm mb-2">
+                  Upload Documents (Passport / Transcript)
+                </label>
+
+                <input type="file" className="w-full border p-2 rounded-md" />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#ff8c42] text-white py-3 rounded-md hover:bg-[#e67a32]"
+              >
+                Submit Enquiry
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </nav>

@@ -43,7 +43,7 @@ export function ThoughtLeadersSection() {
             Industry Interaction
           </p>
 
-          <h2 className="text-2xl md:text-5xl text-[#1e3a5f] mb-4">
+          <h2 className="text-2xl md:text-4xl text-[#1e3a5f] mb-4">
             Thought Leaders on Campus
           </h2>
 

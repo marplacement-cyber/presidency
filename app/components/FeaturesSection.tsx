@@ -52,7 +52,7 @@ export function UpcomingEvents() {
             Campus Life
           </p>
 
-          <h2 className="text-2xl md:text-5xl text-[#1e3a5f] mb-4">
+          <h2 className="text-2xl md:text-4xl text-[#1e3a5f] mb-4">
             UPCOMING EVENTS &
             <span className="block text-[#ff8c42]">ACTIVITIES</span>
           </h2>
@@ -99,7 +99,7 @@ export function UpcomingEvents() {
                       {event.date}
                     </div>
 
-                    <h3 className="text-lg font-semibold text-[#1e3a5f] mb-2 group-hover:text-[#ff8c42] transition">
+                    <h3 className="text-lg  text-[#1e3a5f] mb-2 group-hover:text-[#ff8c42] transition">
                       {event.title}
                     </h3>
 

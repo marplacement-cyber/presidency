@@ -4,7 +4,7 @@ import { Navigation } from "./components/Navigation";
 import { HeroSection } from "./components/HeroSection";
 
 import { ProgramSearch } from "./components/ProgramSearch";
-import { RankingsStatsSlider } from "./components/RankingsStatsSection";
+import { RankingsStatsSection } from "./components/RankingsStatsSection";
 
 import { ProgramsMasonrySection } from "./components/ProgramsSection";
 import { PlacementsSection } from "./components/PlacementsSection";
@@ -38,7 +38,7 @@ export default function App() {
       <ProgramSearch />
 
       {/* Rankings + Stats */}
-      <RankingsStatsSlider />
+      <RankingsStatsSection />
 
       {/* Programs Overview */}
       <ProgramsMasonrySection />

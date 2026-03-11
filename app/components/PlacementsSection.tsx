@@ -48,7 +48,7 @@ export function PlacementsSection() {
             Placements & Careers
           </span>
 
-          <h2 className="text-2xl md:text-5xl mb-6">
+          <h2 className="text-2xl md:text-4xl mb-6">
             OUTSTANDING
             <span className="block text-orange-400">PLACEMENT RECORDS</span>
           </h2>

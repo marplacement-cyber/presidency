@@ -73,7 +73,7 @@ export function AdmissionSection() {
             {admissionContent.tag}
           </span>
 
-          <h2 className="text-2xl md:text-5xl mb-6">
+          <h2 className="text-2xl md:text-4xl mb-6">
             {admissionContent.title}
             <span className="block text-orange-400">
               {admissionContent.highlight}

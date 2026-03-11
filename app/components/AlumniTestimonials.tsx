@@ -55,7 +55,7 @@ export function AlumniTestimonials() {
           Global Alumni Network
         </span>
 
-        <h2 className="text-2xl md:text-5xl mb-12">
+        <h2 className="text-2xl md:text-4xl mb-12">
           SUCCESS STORIES
           <span className="block text-orange-400">FROM OUR ALUMNI</span>
         </h2>
