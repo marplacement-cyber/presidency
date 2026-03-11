@@ -22,7 +22,8 @@ import { ThoughtLeadersSection } from "./components/ThoughtLeadersSection";
 
 import { AdmissionSection } from "./components/AdmissionSection";
 import { CTASection } from "./components/CTASection";
-
+import { ScholarshipsSection } from "./components/ScholarshipsSection";
+import { RankingAccreditationSection } from "./components/RankingAccreditationSection";
 import { Footer } from "./components/Footer";
 
 export default function App() {
@@ -39,7 +40,8 @@ export default function App() {
 
       {/* Rankings + Stats */}
       <RankingsStatsSection />
-
+      <ScholarshipsSection />
+      <RankingAccreditationSection />
       {/* Programs Overview */}
       <ProgramsMasonrySection />
 

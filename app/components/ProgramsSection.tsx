@@ -83,6 +83,10 @@ export function ProgramsMasonrySection() {
             DISCOVER OUR
             <span className="block text-[#ff8c42]">ACADEMIC SCHOOLS</span>
           </h2>
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-sm md:text-lg">
+            Explore a wide range of academic schools designed to prepare
+            students for global careers.
+          </p>
         </div>
 
         {/* TRUE MASONRY */}

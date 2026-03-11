@@ -57,7 +57,7 @@ export function UpcomingEvents() {
             <span className="block text-[#ff8c42]">ACTIVITIES</span>
           </h2>
 
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto  text-sm md:text-lg">
             Stay updated with exciting events, fests, and experiences happening
             across our vibrant campus.
           </p>

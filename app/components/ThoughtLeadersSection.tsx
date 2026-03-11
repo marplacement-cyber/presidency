@@ -47,7 +47,7 @@ export function ThoughtLeadersSection() {
             Thought Leaders on Campus
           </h2>
 
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto  text-sm md:text-lg">
             Learn directly from global leaders, innovators, and visionaries who
             bring real-world insights into the classroom.
           </p>

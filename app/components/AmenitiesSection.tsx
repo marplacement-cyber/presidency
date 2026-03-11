@@ -67,7 +67,7 @@ export function AmenitiesSection() {
 
       <div className="relative max-w-7xl mx-auto px-4">
         {/* HEADER */}
-        <div className="text-center  mb-16">
+        <div className="text-center mb-16">
           <div className="inline-block bg-white/10 backdrop-blur-sm text-[#ff8c42] px-6 py-3 rounded-full mb-6 border border-white/20">
             <span className="uppercase tracking-wider">Campus Facilities</span>
           </div>
@@ -79,6 +79,13 @@ export function AmenitiesSection() {
               LEARNING, INNOVATION & COMMUNITY
             </span>
           </h2>
+
+          {/* Paragraph */}
+          <p className="max-w-3xl mx-auto text-white/80 text-sm md:text-lg leading-relaxed">
+            Our campus offers world-class infrastructure designed for academic
+            excellence and student wellbeing. Modern facilities support
+            learning, innovation, collaboration, and vibrant campus life.
+          </p>
         </div>
 
         {/* GRID */}
