@@ -1,173 +1,114 @@
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+"use client";
 
-export function Footer() {
-  const footerLinks = {
-    about: [
-      "About Presidency",
-      "Vision & Mission",
-      "Leadership",
-      "Accreditations",
-      "Rankings",
-    ],
-    schools: [
-      "School of Engineering",
-      "School of Business",
-      "School of Design",
-      "School of Law",
-      "School of Sciences",
-    ],
-    admissions: [
-      "How to Apply",
-      "Programmes",
-      "Scholarships",
-      "Fees & Funding",
-      "Campus Tours",
-    ],
-    international: [
-      "Why Choose Us",
-      "Student Visa",
-      "Life in Bangalore",
-      "Accommodation",
-      "Support Services",
-    ],
-  };
+import { Phone, Mail, Video, Radio } from "lucide-react";
 
+export function FooterSection() {
   return (
-    <footer className="bg-[#0F1E3D] text-white pt-16 pb-8">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* About Column */}
-          <div>
-            <h4 className="text-white mb-4">About</h4>
-            <ul className="space-y-2 list-none p-0">
-              {footerLinks.about.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-white/70 hover:text-white transition-colors text-sm no-underline"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Schools Column */}
-          <div>
-            <h4 className="text-white mb-4">Schools</h4>
-            <ul className="space-y-2 list-none p-0">
-              {footerLinks.schools.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-white/70 hover:text-white transition-colors text-sm no-underline"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Admissions Column */}
-          <div>
-            <h4 className="text-white mb-4">Admissions</h4>
-            <ul className="space-y-2 list-none p-0">
-              {footerLinks.admissions.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-white/70 hover:text-white transition-colors text-sm no-underline"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* International Office Column */}
-          <div>
-            <h4 className="text-white mb-4">International Office</h4>
-            <ul className="space-y-2 list-none p-0">
-              {footerLinks.international.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-white/70 hover:text-white transition-colors text-sm no-underline"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <footer className="bg-gray-100 text-[#1e2b38] pt-20">
+      <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-5 gap-12 pb-16">
+        {/* COLUMN 1 */}
+        <div>
+          <h3 className="font-semibold mb-4">University</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>About Presidency University</li>
+            <li>International Office</li>
+            <li>Campus Tour</li>
+            <li>How to Reach</li>
+          </ul>
         </div>
 
-        {/* Contact Info */}
-        <div className="border-t border-white/20 pt-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="text-white mb-3">Contact Us</h4>
-              <p className="text-white/70 text-sm mb-2">
-                Presidency University
-                <br />
-                Itgalpura, Rajanakunte, Yelahanka
-                <br />
-                Bangalore - 560064, Karnataka, India
-              </p>
-              <p className="text-white/70 text-sm mb-1">
-                Email: international@presidencyuniversity.in
-              </p>
-              <p className="text-white/70 text-sm">Phone: +91 80 4012 9999</p>
+        {/* COLUMN 2 */}
+        <div>
+          <h3 className="font-semibold mb-4">Academic Programs</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>Engineering & Technology</li>
+            <li>Business & Management</li>
+            <li>Science & Humanities</li>
+            <li>Law</li>
+            <li>Doctoral Programs</li>
+          </ul>
+        </div>
+
+        {/* COLUMN 3 */}
+        <div>
+          <h3 className="font-semibold mb-4">Admissions</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>Scholarships</li>
+            <li>Admission India</li>
+            <li>Admission International</li>
+            <li>Prospectus</li>
+          </ul>
+        </div>
+
+        {/* COLUMN 4 */}
+        <div>
+          <h3 className="font-semibold mb-4">Research & Innovation</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>Research Centers</li>
+            <li>Innovation & Incubation</li>
+            <li>Faculty Research</li>
+            <li>Industry Collaboration</li>
+          </ul>
+        </div>
+
+        {/* COLUMN 5 */}
+        <div>
+          <h3 className="font-semibold mb-4">Media & Resources</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>News</li>
+            <li>Press & Media</li>
+            <li>Events</li>
+            <li>Student Resources</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* CONTACT BAR */}
+      <div className="border-t border-gray-300 py-10">
+        <div className="max-w-[1400px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-10">
+          {/* LOGO */}
+          <div className="text-3xl font-bold text-[#1e3a5f]">
+            Presidency University
+          </div>
+
+          {/* CONTACT INFO */}
+          <div className="flex flex-col gap-2 text-gray-600">
+            <div className="flex items-center gap-3">
+              <Phone size={18} /> +91 80 1234 5678
             </div>
 
-            <div>
-              <h4 className="text-white mb-3">Follow Us</h4>
-              <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  <Facebook size={24} />
-                </a>
-                <a
-                  href="#"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  <Twitter size={24} />
-                </a>
-                <a
-                  href="#"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a
-                  href="#"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  <Linkedin size={24} />
-                </a>
-                <a
-                  href="#"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  <Youtube size={24} />
-                </a>
-              </div>
+            <div className="flex items-center gap-3">
+              <Phone size={18} /> +91 80 8765 4321
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Mail size={18} /> admissions@presidencyuniversity.edu
+            </div>
+          </div>
+
+          {/* QUICK LINKS */}
+          <div className="flex items-center gap-10 text-[#1e3a5f]">
+            <div className="flex items-center gap-2">
+              <Video size={22} />
+              Virtual Tour
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Video size={22} />
+              Videos
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Radio size={22} />
+              Campus Radio
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Copyright */}
-        <div className="border-t border-white/20 pt-6 text-center">
-          <p className="text-white/60 text-sm m-0">
-            © 2026 Presidency University. All rights reserved. | Privacy Policy
-            | Terms of Service
-          </p>
-        </div>
+      {/* COPYRIGHT */}
+      <div className="bg-[#1e4c8f] text-white text-center py-4 text-sm">
+        © 2026 Presidency University. All Rights Reserved.
       </div>
     </footer>
   );

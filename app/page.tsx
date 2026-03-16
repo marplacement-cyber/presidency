@@ -24,12 +24,17 @@ import { ThoughtLeadersSection } from "./components/ThoughtLeadersSection";
 import { TestimonialsSection } from "./components/testimonials-section";
 import { AdmissionSection } from "./components/AdmissionSection";
 import { CTASection } from "./components/CTASection";
+import { NewsSection } from "./components/NewsSection";
 import { ScholarshipsSection } from "./components/ScholarshipsSection";
 import { ResearchHighlightsSection } from "./components/ResearchHighlightsSection";
 import { RankingAccreditationSection } from "./components/RankingAccreditationSection";
 import { ApplicationProcess } from "./components/application-process";
 import { FinalCTA } from "./components/final-cta";
-import { Footer } from "./components/Footer";
+import { InFocusSection } from "./components/InFocusSection";
+import { PlacementPartnersSection } from "./components/PlacementPartnersSection";
+import { CampusVirtualTourSection } from "./components/CampusVirtualTourSection";
+import { BangaloreCTASection } from "./components/BangaloreCTASection";
+import { FooterSection } from "./components/Footer";
 
 export default function App() {
   return (
@@ -50,28 +55,35 @@ export default function App() {
       <RankingAccreditationSection /> */}
       {/* Programs Overview */}
       <ProgrammesSection />
+      <BangaloreCTASection />
       <SchoolsSliderSection />
       <InternationalStudentsSection />
       <ResearchHighlightsSection />
-      <CampusLife />
-      <BangaloreSection />
+      {/* <CampusLife /> */}
+      {/* <BangaloreSection /> */}
       {/* Campus Facilities */}
       {/* <AmenitiesSection /> */}
-      <AccreditationSection />
+      <EventsActivitiesSection />
+      <PlacementPartnersSection />
+      <ScholarshipsSection />
+      <NewsSection />
+      <InFocusSection />
+      <CampusVirtualTourSection />
+      {/* <AccreditationSection />
       <TestimonialsSection />
-      <ApplicationProcess />
+      <ApplicationProcess /> */}
       {/* Campus Master Plan */}
       {/* <MasterPlanSection /> */}
 
       {/* Campus Infrastructure */}
       {/* <LifeAtPresidency /> */}
       {/* Student Life */}
-      <EventsActivitiesSection />
+
       {/* Placement & Careers */}
       {/* <PlacementsSection /> */}
 
       {/* Events */}
-      <UpcomingEvents />
+      {/* <UpcomingEvents /> */}
 
       {/* Community & Clubs */}
       {/* <CommunitySection /> */}
@@ -86,11 +98,11 @@ export default function App() {
       {/* <AdmissionSection /> */}
 
       {/* Final Call to Action */}
-      <FinalCTA />
+      {/* <FinalCTA /> */}
       {/* <CTASection /> */}
 
       {/* Footer */}
-      <Footer />
+      <FooterSection />
     </div>
   );
 }

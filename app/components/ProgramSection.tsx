@@ -1,31 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import { Calendar, ArrowRight } from "lucide-react";
 
-const events = [
+const eventsData = [
   {
-    title: "Tech Innovation Summit",
-    date: "March 15, 2026",
+    title: "TechBiz – Annual 24-Hour Innovation Challenge",
+    date: "February 2026",
     image: "https://images.unsplash.com/photo-1503428593586-e225b39bddfe",
   },
   {
-    title: "Startup Expo",
-    date: "April 10, 2026",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd",
-  },
-  {
-    title: "Cultural Festival",
-    date: "May 05, 2026",
+    title: "Kaleidoscope – Presidency Cultural Festival",
+    date: "March 2026",
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
   },
   {
-    title: "Global Leadership Forum",
-    date: "June 20, 2026",
+    title: "Eunoia – Creative Arts Festival",
+    date: "April 2026",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865",
+  },
+  {
+    title: "Leadership & Entrepreneurship Summit",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd",
   },
 ];
 
 export function EventsActivitiesSection() {
+  const [activeEvent, setActiveEvent] = useState(eventsData[0]);
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -37,7 +40,7 @@ export function EventsActivitiesSection() {
 
           <h2 className="text-2xl md:text-4xl lg:text-5xl text-[#1e3a5f] mt-3 leading-tight">
             Events & Activities That
-            <span className="block text-[#ff8c42]">Inspire You</span>
+            <span className="block text-[#ff8c42]">Shape Student Life</span>
           </h2>
 
           <p className="text-gray-600 mt-5 text-lg">
@@ -48,10 +51,10 @@ export function EventsActivitiesSection() {
 
         {/* EVENT GRID */}
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* FEATURED EVENT */}
+          {/* MAIN FEATURED EVENT */}
           <div className="lg:col-span-2 relative rounded-3xl overflow-hidden group">
             <img
-              src={events[0].image}
+              src={activeEvent.image}
               className="w-full h-[380px] object-cover group-hover:scale-110 transition duration-700"
               alt=""
             />
@@ -61,18 +64,19 @@ export function EventsActivitiesSection() {
             <div className="absolute bottom-0 p-8 text-white">
               <div className="flex items-center gap-2 text-orange-400 text-sm mb-2">
                 <Calendar size={16} />
-                {events[0].date}
+                {activeEvent.date}
               </div>
 
-              <h3 className="text-2xl font-semibold">{events[0].title}</h3>
+              <h3 className="text-2xl font-semibold">{activeEvent.title}</h3>
             </div>
           </div>
 
           {/* SMALL EVENT CARDS */}
           <div className="flex flex-col gap-6">
-            {events.slice(1).map((event, i) => (
+            {eventsData.slice(1).map((event, i) => (
               <div
                 key={i}
+                onClick={() => setActiveEvent(event)}
                 className="flex gap-4 bg-white p-4 rounded-2xl shadow-sm hover:shadow-lg transition cursor-pointer"
               >
                 <img

@@ -1,84 +1,102 @@
 "use client";
 
-import { Award, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { GraduationCap, HandCoins, Users } from "lucide-react";
 
-const scholarships = [
-  {
-    title: "Merit Scholarship",
-    percent: "30%",
-    desc: "Up to 30% tuition fee waiver for students with outstanding academic performance.",
-  },
-  {
-    title: "Chancellor's Scholarship",
-    percent: "40%",
-    desc: "Exclusive scholarship for exceptional international students with leadership potential.",
-  },
-  {
-    title: "Early Applicant Scholarship",
-    percent: "20%",
-    desc: "Fee reduction for students who apply early for the academic intake.",
-  },
-];
+type CounterProps = {
+  end: number;
+  duration?: number;
+  suffix?: string;
+};
+
+function Counter({ end, duration = 2000, suffix = "" }: CounterProps) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const increment = end / (duration / 16);
+
+    const counter = setInterval(() => {
+      start += increment;
+
+      if (start >= end) {
+        setCount(end);
+        clearInterval(counter);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(counter);
+  }, [end, duration]);
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 export function ScholarshipsSection() {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white to-[#f8fafc] overflow-hidden">
-      {/* background glow */}
-      <div className="absolute -top-20 right-0 w-[400px] h-[400px] bg-[#ff8c42]/10 blur-[120px] rounded-full"></div>
+    <section className="relative py-28 text-white">
+      {/* BACKGROUND */}
+      <img
+        src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070"
+        className="absolute inset-0 w-full h-full object-cover"
+        alt=""
+      />
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <span className="bg-[#ff8c42]/10 text-[#ff8c42] px-5 py-2 rounded-full text-sm">
-            Scholarships & Financial Aid
-          </span>
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-[#0A2E4E]/80"></div>
 
-          <h2 className="mt-4 text-2xl md:text-4xl text-[#1e3a5f] leading-tight">
-            Study with
-            <span className="block text-[#ff8c42]">Financial Support</span>
-          </h2>
+      <div className="relative max-w-[1200px] mx-auto px-6 text-center">
+        {/* TITLE */}
+        <h2 className="text-4xl font-semibold mb-16">
+          Scholarships & Financial Support
+        </h2>
 
-          <p className="text-gray-600 mt-4 max-w-xl mx-auto  text-sm md:text-lg">
-            Presidency University offers merit-based and special scholarships to
-            help talented international students achieve their academic goals.
-          </p>
-        </div>
+        {/* COUNTERS */}
+        <div className="grid md:grid-cols-3 gap-10 items-center">
+          {/* ITEM 1 */}
+          <div className="flex flex-col items-center">
+            <GraduationCap size={70} className="text-[#ff7a2f] mb-4" />
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {scholarships.map((item, i) => (
-            <div
-              key={i}
-              className="group relative bg-white border border-gray-100 rounded-3xl p-8 hover:shadow-2xl transition duration-300 overflow-hidden"
-            >
-              {/* badge */}
-              <div className="absolute top-0 right-0 bg-[#ff8c42] text-white text-sm px-4 py-2 rounded-bl-xl">
-                {item.percent} OFF
-              </div>
+            <h3 className="text-5xl font-bold">
+              <Counter end={600} suffix="+" />
+            </h3>
 
-              {/* icon */}
-              <div className="bg-[#ff8c42]/10 w-14 h-14 flex items-center justify-center rounded-xl mb-6 group-hover:bg-[#ff8c42] transition">
-                <Award className="text-[#ff8c42] group-hover:text-white" />
-              </div>
+            <p className="text-white/80 mt-2">Scholarships</p>
+          </div>
 
-              <h3 className="text-xl text-[#1e3a5f] mb-3">{item.title}</h3>
+          {/* ITEM 2 */}
+          <div className="flex flex-col items-center border-x border-white/30 px-10">
+            <HandCoins size={70} className="text-[#ff7a2f] mb-4" />
 
-              <p className="text-gray-600 mb-6 leading-relaxed">{item.desc}</p>
+            <h3 className="text-5xl font-bold">
+              ₹<Counter end={4.87} suffix=" Cr" />
+            </h3>
 
-              <button className="flex items-center gap-2 text-[#ff8c42] font-medium hover:gap-3 transition">
-                Learn More
-                <ArrowRight size={16} />
-              </button>
-            </div>
-          ))}
+            <p className="text-white/80 mt-2">Worth of Scholarships</p>
+          </div>
+
+          {/* ITEM 3 */}
+          <div className="flex flex-col items-center">
+            <Users size={70} className="text-[#ff7a2f] mb-4" />
+
+            <h3 className="text-5xl font-bold">
+              <Counter end={579} suffix="+" />
+            </h3>
+
+            <p className="text-white/80 mt-2">Students Supported</p>
+          </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
-          <button className="bg-[#ff8c42] hover:bg-[#e67a32] text-white px-10 py-4 rounded-full transition">
-            Apply for Scholarship
-          </button>
-        </div>
+        <button className="mt-16 bg-[#ff7a2f] px-8 py-3 rounded-md hover:bg-[#e46720] transition">
+          View More →
+        </button>
       </div>
     </section>
   );
