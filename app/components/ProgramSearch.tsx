@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 export function ProgramSearch() {
   return (
-    <section className="relative mt-0 md:-mt-24 z-20 px-4 pt-4 md:pt-0">
+    <section className="relative  z-20 px-4 py-20 pb-0">
       <div className="mx-auto">
         {/* MAIN BOX */}
         <div className="bg-[#1e3a5f] text-white border border-[#2c5a87] rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] p-6 md:p-8">
