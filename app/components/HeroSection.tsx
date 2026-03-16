@@ -139,7 +139,7 @@ export function HeroSection() {
                 className="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-6 text-center hover:bg-white/15 hover:border-white/50 transition-all duration-300 hover:scale-105"
               >
                 <div
-                  className="text-4xl md:text-5xl font-semibold text-[#D4A843] mb-2"
+                  className="text-xl md:text-2xl font-semibold text-[#D4A843] mb-2"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {stat.value}
