@@ -35,6 +35,7 @@ import { PlacementPartnersSection } from "./components/PlacementPartnersSection"
 import { CampusVirtualTourSection } from "./components/CampusVirtualTourSection";
 import { BangaloreCTASection } from "./components/BangaloreCTASection";
 import { FooterSection } from "./components/Footer";
+import { BangaloreLifeSection } from "./components/BangaloreLifeSection";
 
 export default function App() {
   return (
@@ -102,6 +103,7 @@ export default function App() {
       {/* <CTASection /> */}
 
       {/* Footer */}
+      <BangaloreLifeSection />
       <FooterSection />
     </div>
   );
