@@ -1,7 +1,14 @@
 "use client";
 
 export function BangaloreLifeSection() {
-  const items = [
+  type BangaloreItem = {
+    title: string;
+    subtitle: string;
+    image: string;
+    large?: boolean;
+    wide?: boolean;
+  };
+  const items: BangaloreItem[] = [
     {
       title: "Global Technology Hub",
       subtitle: "Home to Google, Microsoft & Amazon",
@@ -20,6 +27,13 @@ export function BangaloreLifeSection() {
       subtitle: "Multinational companies and global careers",
       image:
         "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070",
+    },
+    {
+      title: "Culture & Lifestyle",
+      subtitle: "A vibrant international student city",
+      image:
+        "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2070",
+      wide: true,
     },
   ];
 
