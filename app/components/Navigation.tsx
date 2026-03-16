@@ -1,389 +1,278 @@
-"use client";
-
-import { Menu, X, Search, ChevronDown } from "lucide-react";
-import { useState, useRef } from "react";
-
-import { Dialog } from "@/components/ui/dialog";
-/* ---------------- DATA ---------------- */
-
-const studyPrograms = [
-  "Undergraduate Programmes",
-  "Postgraduate Programmes",
-  "Doctoral (PhD)",
-  "International Pathways",
-  "Foreign Language Electives",
-  "Short Courses",
-];
-
-const schools = [
-  "Computer Science & Engineering",
-  "Information Science",
-  "Mechanical Engineering",
-  "Civil Engineering",
-  "Management",
-  "Commerce",
-  "Law",
-  "Design",
-  "Media Studies",
-];
-
-const mobileLinks = [
-  "Campus Life",
-  "Life in Bangalore",
-  "International",
-  "About",
-  "Contact",
-];
-
-/* ---------------- COMPONENT ---------------- */
-
+import { useState, useEffect } from "react";
+import {
+  Menu,
+  X,
+  Search,
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  ChevronDown,
+} from "lucide-react";
+import Image from "next/image";
 export function Navigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState("");
-  const [mobileSubMenu, setMobileSubMenu] = useState<string | null>(null);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [applyOpen, setApplyOpen] = useState(false);
-  const hoverTimeout = useRef<any>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  /* Hover delay handlers */
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const handleMouseEnter = (menu: string) => {
-    clearTimeout(hoverTimeout.current);
-    hoverTimeout.current = setTimeout(() => {
-      setActiveMenu(menu);
-    }, 200);
-  };
+  const leftNavItems = [
+    { label: "About", href: "#why-presidency" },
+    { label: "Academics", href: "#programmes", hasDropdown: true },
+    { label: "Admissions", href: "#admissions", hasDropdown: true },
+  ];
 
-  const handleMouseLeave = () => {
-    clearTimeout(hoverTimeout.current);
-    hoverTimeout.current = setTimeout(() => {
-      setActiveMenu("");
-    }, 250);
-  };
-
-  /* Mobile submenu toggle */
-
-  const toggleMobileSubMenu = (menu: string) => {
-    setMobileSubMenu(mobileSubMenu === menu ? null : menu);
-  };
+  const rightNavItems = [
+    { label: "Campus Life", href: "#campus-life" },
+    { label: "Research", href: "#research" },
+    { label: "International", href: "#life-in-bangalore" },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      {/* ================= MOBILE HEADER ================= */}
-
-      <div className="md:hidden bg-white border-b shadow-sm">
-        <div className="flex items-center justify-between px-4 py-3">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0f1e3d] to-[#0bb5b5] flex items-center justify-center text-white font-bold">
-              P
+    <>
+      {/* Top Utility Bar */}
+      <div className="bg-[#0F1E3D] text-white h-[40px] relative z-50">
+        <div className="max-w-[1440px] mx-auto px-8 md:px-12 h-full">
+          <div className="flex items-center justify-between h-full">
+            {/* Left Utility Links */}
+            <div className="flex items-center gap-6">
+              <a
+                href="#bangalore"
+                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline flex items-center gap-1.5"
+              >
+                <MapPin size={12} />
+                <span className="hidden sm:inline">Bangalore, India</span>
+              </a>
+              <a
+                href="tel:+91"
+                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline flex items-center gap-1.5"
+              >
+                <Phone size={12} />
+                <span className="hidden md:inline">Contact</span>
+              </a>
+              <a
+                href="#international"
+                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline flex items-center gap-1.5"
+              >
+                <Globe size={12} />
+                <span className="hidden lg:inline">International Office</span>
+              </a>
             </div>
 
-            <div className="leading-tight">
-              <p className="text-[#0f1e3d] font-semibold text-sm">
-                Presidency University
-              </p>
-              <p className="text-[#0bb5b5] text-xs tracking-widest">
-                INTERNATIONAL
-              </p>
+            {/* Right Utility Links */}
+            <div className="flex items-center gap-6">
+              <a
+                href="#students"
+                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline hidden md:inline"
+              >
+                Current Students
+              </a>
+              <a
+                href="#alumni"
+                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline hidden lg:inline"
+              >
+                Alumni
+              </a>
+              <a
+                href="#faculty"
+                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline hidden lg:inline"
+              >
+                Faculty & Staff
+              </a>
+              <button
+                className="text-white/80 hover:text-white transition-colors"
+                aria-label="Search"
+              >
+                <Search size={16} />
+              </button>
             </div>
           </div>
-
-          {/* Hamburger */}
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
         </div>
       </div>
 
-      {/* ================= DESKTOP NAV ================= */}
+      {/* Main Navigation Bar */}
+      <nav
+        className={`sticky top-0 left-0 right-0 z-40 transition-all duration-300 bg-white ${
+          isScrolled ? "shadow-lg" : "shadow-md"
+        }`}
+      >
+        <div className="max-w-[1440px] mx-auto px-8 md:px-12 relative">
+          <div className="flex items-center justify-between h-[85px]">
+            {/* Left Navigation Items */}
+            <div className="hidden lg:flex items-center gap-8 flex-1 justify-end pr-36">
+              {leftNavItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative group"
+                  onMouseEnter={() =>
+                    item.hasDropdown && setActiveDropdown(item.label)
+                  }
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <a
+                    href={item.href}
+                    className="text-[#4A5568] hover:text-[#0A8F96] transition-colors text-sm font-medium tracking-wide no-underline flex items-center gap-1"
+                  >
+                    {item.label}
+                    {item.hasDropdown && (
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform ${activeDropdown === item.label ? "rotate-180" : ""}`}
+                      />
+                    )}
+                  </a>
 
-      <div className="hidden md:block bg-[#1e3a5f] border-b border-gray-700">
-        <div className="mx-auto px-6">
-          <div className="flex items-center justify-between h-[88px]">
-            {/* Logo */}
-            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow-sm">
-              <img
-                src="/img/inner-logo.png"
-                alt="Presidency University"
-                className="h-10"
-              />
+                  {/* Dropdown Menu */}
+                  {item.hasDropdown && (
+                    <div
+                      className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white border border-gray-200 shadow-xl mt-4 transition-all duration-200 ${
+                        activeDropdown === item.label
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible -translate-y-2"
+                      }`}
+                    >
+                      <div className="py-2">
+                        <a
+                          href="#"
+                          className="block px-6 py-3 text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline text-sm"
+                        >
+                          {item.label === "Academics"
+                            ? "All Programmes"
+                            : "Undergraduate"}
+                        </a>
+                        <a
+                          href="#"
+                          className="block px-6 py-3 text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline text-sm"
+                        >
+                          {item.label === "Academics"
+                            ? "Schools & Departments"
+                            : "Postgraduate"}
+                        </a>
+                        <a
+                          href="#"
+                          className="block px-6 py-3 text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline text-sm"
+                        >
+                          {item.label === "Academics"
+                            ? "Faculty"
+                            : "International Students"}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* Desktop Menu */}
-            <div className="flex items-center gap-10 text-white">
-              {/* STUDY */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleMouseEnter("study")}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button className="hover:text-orange-400">Study</button>
-
-                {activeMenu === "study" && (
-                  <div className="absolute top-full left-0 mt-2 w-[320px] bg-[#0f2f4a] rounded-lg shadow-xl p-6">
-                    <ul className="space-y-3 text-gray-300">
-                      {studyPrograms.map((item) => (
-                        <li
-                          key={item}
-                          className="hover:text-white cursor-pointer"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+            {/* Center Logo - Overlapping Top Bar */}
+            <div className="absolute left-1/2 -translate-x-1/2 -top-3">
+              <a href="#" className="no-underline block">
+                <div className="bg-white px-8 py-3 shadow-lg rounded-b-lg border-t-4 border-[#0A8F96]">
+                  <div className="flex flex-col items-center">
+                    <img
+                      src="/img/logo.webp"
+                      alt="Presidency University"
+                      className="h-20 w-auto"
+                    />
                   </div>
-                )}
-              </div>
+                </div>
+              </a>
+            </div>
 
-              {/* SCHOOLS */}
-              <div
-                className=""
-                onMouseEnter={() => handleMouseEnter("schools")}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button className="hover:text-orange-400">Schools</button>
+            {/* Right Navigation Items */}
+            <div className="hidden lg:flex items-center gap-8 flex-1 pl-12">
+              {rightNavItems.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  className="text-[#4A5568] hover:text-[#0A8F96] transition-colors text-sm font-medium tracking-wide no-underline"
+                >
+                  {item.label}
+                </a>
+              ))}
 
-                {activeMenu === "schools" && (
-                  <div className="absolute top-full left-0 w-screen bg-gradient-to-r from-[#0f2f4a] to-[#123a5a] shadow-xl">
-                    <div className="max-w-7xl mx-auto grid grid-cols-3 gap-10 px-10 py-10 text-white">
-                      <div>
-                        <h4 className="font-semibold mb-4">Engineering</h4>
-                        <ul className="space-y-2 text-gray-300">
-                          {schools.slice(0, 4).map((item) => (
-                            <li
-                              key={item}
-                              className="hover:text-orange-400 cursor-pointer"
-                            >
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+              {/* CTA Button */}
+              <button className="ml-4 bg-[#0A8F96] text-white px-7 py-2.5 rounded-md hover:bg-[#0BB5B5] transition-all duration-300 text-sm font-semibold tracking-wide uppercase shadow-md hover:shadow-lg hover:scale-105">
+                Apply Now
+              </button>
+            </div>
 
-                      <div>
-                        <h4 className="font-semibold mb-4">Business</h4>
-                        <ul className="space-y-2 text-gray-300">
-                          {schools.slice(4, 6).map((item) => (
-                            <li
-                              key={item}
-                              className="hover:text-orange-400 cursor-pointer"
-                            >
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden p-2 text-[#0F1E3D] relative z-50"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
 
-                      <div>
-                        <h4 className="font-semibold mb-4">Other Schools</h4>
-                        <ul className="space-y-2 text-gray-300">
-                          {schools.slice(6).map((item) => (
-                            <li
-                              key={item}
-                              className="hover:text-orange-400 cursor-pointer"
-                            >
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
+          {/* Mobile Menu Overlay */}
+          {isMobileMenuOpen && (
+            <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-xl">
+              <div className="px-6 py-6 max-h-[calc(100vh-125px)] overflow-y-auto">
+                <div className="flex flex-col gap-1">
+                  {/* Mobile Logo Spacer */}
+                  <div className="mb-4 pb-4 border-b border-gray-200">
+                    <div className="text-center">
+                      <div
+                        className="text-[#0F1E3D] text-xl font-semibold"
+                        style={{ fontFamily: "var(--font-heading)" }}
+                      >
+                        Presidency University
                       </div>
                     </div>
                   </div>
-                )}
+
+                  {/* Combined Navigation */}
+                  {[...leftNavItems, ...rightNavItems].map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.href}
+                      className="text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline py-3 px-4 rounded text-sm font-medium"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+
+                  {/* Mobile Utility Links */}
+                  <div className="mt-4 pt-4 border-t border-gray-200 flex flex-col gap-2">
+                    <a
+                      href="#students"
+                      className="text-[#4A5568] hover:text-[#0A8F96] transition-colors no-underline py-2 px-4 text-xs uppercase tracking-wider"
+                    >
+                      Current Students
+                    </a>
+                    <a
+                      href="#alumni"
+                      className="text-[#4A5568] hover:text-[#0A8F96] transition-colors no-underline py-2 px-4 text-xs uppercase tracking-wider"
+                    >
+                      Alumni
+                    </a>
+                    <a
+                      href="#faculty"
+                      className="text-[#4A5568] hover:text-[#0A8F96] transition-colors no-underline py-2 px-4 text-xs uppercase tracking-wider"
+                    >
+                      Faculty & Staff
+                    </a>
+                  </div>
+
+                  {/* Mobile CTA */}
+                  <button className="bg-[#0A8F96] text-white px-6 py-3 rounded-md hover:bg-[#0BB5B5] transition-colors w-full mt-6 font-semibold uppercase tracking-wide text-sm">
+                    Apply Now
+                  </button>
+                </div>
               </div>
-
-              <a className="hover:text-orange-400">Campus Life</a>
-              <a className="hover:text-orange-400">Life in Bangalore</a>
-              <a className="hover:text-orange-400">International</a>
-              <a className="hover:text-orange-400">About</a>
-              <a className="hover:text-orange-400">Contact</a>
             </div>
-
-            {/* Right side */}
-            <div className="flex items-center gap-6">
-              <Search
-                onClick={() => setSearchOpen(true)}
-                className="text-white cursor-pointer hover:text-orange-400"
-              />
-
-              <button
-                onClick={() => setApplyOpen(true)}
-                className="bg-[#ff8c42] hover:bg-[#e67a32] px-6 md:px-8 py-3 md:py-4 rounded-full flex items-center justify-center gap-2 transition text-white"
-              >
-                APPLY NOW
-              </button>
-            </div>
-          </div>
+          )}
         </div>
-      </div>
-
-      {/* ================= MOBILE MENU ================= */}
-
-      {menuOpen && (
-        <div className="md:hidden bg-[#0f1e3d] text-white px-6 py-6 space-y-4">
-          {/* STUDY */}
-          <div>
-            <button
-              onClick={() => toggleMobileSubMenu("study")}
-              className="flex justify-between w-full text-lg"
-            >
-              Study
-              <ChevronDown size={20} />
-            </button>
-
-            {mobileSubMenu === "study" && (
-              <ul className="mt-3 space-y-2 pl-4 text-gray-300">
-                {studyPrograms.map((item) => (
-                  <li key={item} className="hover:text-orange-400">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* SCHOOLS */}
-          <div>
-            <button
-              onClick={() => toggleMobileSubMenu("schools")}
-              className="flex justify-between w-full text-lg"
-            >
-              Schools
-              <ChevronDown size={20} />
-            </button>
-
-            {mobileSubMenu === "schools" && (
-              <ul className="mt-3 space-y-2 pl-4 text-gray-300">
-                {schools.map((item) => (
-                  <li key={item} className="hover:text-orange-400">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Other Links */}
-          {mobileLinks.map((link) => (
-            <a key={link} className="block text-lg hover:text-orange-400">
-              {link}
-            </a>
-          ))}
-
-          <button className="bg-orange-500 w-full py-3 rounded-md hover:bg-orange-600">
-            APPLY NOW
-          </button>
-        </div>
-      )}
-      {searchOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-40 z-50">
-          <div className="bg-white w-[500px] rounded-lg p-6 shadow-xl">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Search</h3>
-              <button onClick={() => setSearchOpen(false)}>
-                <X />
-              </button>
-            </div>
-
-            <input
-              type="text"
-              placeholder="Search programmes, schools, campus..."
-              className="w-full border px-4 py-3 rounded-md outline-none"
-            />
-
-            <button className="mt-4 bg-[#1e3a5f] text-white px-6 py-2 rounded-md">
-              Search
-            </button>
-          </div>
-        </div>
-      )}
-      {searchOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-40 z-50">
-          <div className="bg-white w-[500px] rounded-lg p-6 shadow-xl">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg ">Search</h3>
-              <button onClick={() => setSearchOpen(false)}>
-                <X />
-              </button>
-            </div>
-
-            <input
-              type="text"
-              placeholder="Search programmes, schools, campus..."
-              className="w-full border px-4 py-3 rounded-md outline-none"
-            />
-
-            <button className="mt-4 bg-[#1e3a5f] text-white px-6 py-2 rounded-md">
-              Search
-            </button>
-          </div>
-        </div>
-      )}
-      {applyOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white w-[600px] rounded-xl p-8 shadow-xl">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl  text-[#1e3a5f]">
-                International Student Enquiry
-              </h2>
-
-              <button onClick={() => setApplyOpen(false)}>
-                <X />
-              </button>
-            </div>
-
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full border px-4 py-3 rounded-md"
-              />
-
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full border px-4 py-3 rounded-md"
-              />
-
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full border px-4 py-3 rounded-md"
-              />
-
-              <select className="w-full border px-4 py-3 rounded-md">
-                <option>Select Programme</option>
-                <option>Undergraduate</option>
-                <option>Postgraduate</option>
-                <option>PhD</option>
-              </select>
-
-              <textarea
-                placeholder="Your message"
-                className="w-full border px-4 py-3 rounded-md"
-              />
-
-              {/* Document Upload */}
-
-              <div>
-                <label className="block text-sm mb-2">
-                  Upload Documents (Passport / Transcript)
-                </label>
-
-                <input type="file" className="w-full border p-2 rounded-md" />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#ff8c42] text-white py-3 rounded-md hover:bg-[#e67a32]"
-              >
-                Submit Enquiry
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-    </nav>
+      </nav>
+    </>
   );
 }

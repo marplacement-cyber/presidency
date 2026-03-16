@@ -4,12 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ---------------- ROOT THEME ---------------- */
+/* =====================================================
+ROOT THEME
+===================================================== */
 
 :root {
   --font-size: 16px;
 
-  /* CORE COLORS */
+  /* ---------- BRAND COLOUR PALETTE ---------- */
+
   --navy: #0f1e3d;
   --teal: #0a8f96;
   --teal-light: #0bb5b5;
@@ -21,127 +24,92 @@
   --slate: #4a5568;
   --light-slate: #94a3b8;
 
-  --border: oklch(0.922 0 0);
+  --border: #e2e0db;
 
-  /* BASE SYSTEM */
+  /* ---------- BASE SYSTEM ---------- */
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --background: var(--cream);
+  --foreground: var(--slate);
 
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --card: var(--warm-white);
+  --card-foreground: var(--slate);
 
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --primary: var(--teal);
+  --primary-foreground: white;
 
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --secondary: var(--warm-white);
+  --secondary-foreground: var(--navy);
 
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --muted: var(--warm-white);
+  --muted-foreground: var(--light-slate);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: #ffffff;
+  --accent: var(--teal-light);
+  --accent-foreground: white;
 
-  --ring: oklch(0.708 0 0);
+  --destructive: #dc2626;
+  --destructive-foreground: white;
 
-  /* CHART COLORS */
+  --ring: var(--teal);
+
+  /* ---------- CHART COLOURS ---------- */
+
   --chart-1: oklch(0.809 0.105 251.813);
   --chart-2: oklch(0.623 0.214 259.815);
   --chart-3: oklch(0.546 0.245 262.881);
   --chart-4: oklch(0.488 0.243 264.376);
   --chart-5: oklch(0.424 0.199 265.638);
 
-  /* TYPOGRAPHY */
+  /* ---------- TYPOGRAPHY ---------- */
+
   --font-heading: "DM Serif Display", Georgia, serif;
   --font-body: "Outfit", sans-serif;
 
   --font-weight-medium: 500;
   --font-weight-normal: 400;
 
-  /* LAYOUT */
+  /* ---------- LAYOUT ---------- */
+
   --radius: 0.625rem;
   --page-max: 1180px;
   --page-pad: 40px;
   --section-gap: 44px;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --input: oklch(0.922 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* ---------------- DARK MODE ---------------- */
+/* =====================================================
+DARK MODE
+===================================================== */
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: #0f172a;
+  --foreground: #f9fafb;
 
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  --card: #1e293b;
+  --card-foreground: #f9fafb;
 
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: var(--teal-light);
+  --primary-foreground: white;
 
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary: #1e293b;
+  --secondary-foreground: #f9fafb;
 
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
 
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: var(--teal);
+  --accent-foreground: white;
 
-  --border: oklch(1 0 0 / 10%);
+  --border: rgba(255, 255, 255, 0.1);
 
-  --popover: oklch(0.205 0 0);
-
-  --popover-foreground: oklch(0.985 0 0);
-
-  --destructive: oklch(0.704 0.191 22.216);
-
-  --input: oklch(1 0 0 / 15%);
-
-  --ring: oklch(0.556 0 0);
-
-  --chart-1: oklch(0.809 0.105 251.813);
-
-  --chart-2: oklch(0.623 0.214 259.815);
-
-  --chart-3: oklch(0.546 0.245 262.881);
-
-  --chart-4: oklch(0.488 0.243 264.376);
-
-  --chart-5: oklch(0.424 0.199 265.638);
-
-  --sidebar: oklch(0.205 0 0);
-
-  --sidebar-foreground: oklch(0.985 0 0);
-
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-
-  --sidebar-accent: oklch(0.269 0 0);
-
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-
-  --sidebar-border: oklch(1 0 0 / 10%);
-
-  --sidebar-ring: oklch(0.556 0 0);
+  --ring: var(--teal-light);
 }
 
-/* ---------------- TAILWIND THEME TOKENS ---------------- */
+/* =====================================================
+TAILWIND THEME TOKENS
+===================================================== */
 
 @theme inline {
+  /* ---------- BASE ---------- */
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -163,34 +131,30 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
+  /* ---------- BRAND COLORS ---------- */
+
+  --color-navy: var(--navy);
+  --color-teal: var(--teal);
+  --color-teal-light: var(--teal-light);
+  --color-gold: var(--gold);
+
+  --color-cream: var(--cream);
+  --color-warm-white: var(--warm-white);
+
+  --color-slate: var(--slate);
+  --color-light-slate: var(--light-slate);
+
+  /* ---------- RADII ---------- */
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-input: var(--input);
-  --color-destructive: var(--destructive);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ---------------- BASE STYLES ---------------- */
+/* =====================================================
+BASE STYLES
+===================================================== */
 
 @layer base {
   * {
@@ -199,15 +163,15 @@
 
   html {
     font-size: var(--font-size);
-    @apply font-sans;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background: var(--background);
+    color: var(--slate);
     font-family: var(--font-body);
   }
 
-  /* ---------------- HEADINGS ---------------- */
+  /* ---------- HEADINGS ---------- */
 
   h1,
   h2,
@@ -241,23 +205,20 @@
     font-weight: var(--font-weight-medium);
   }
 
-  /* ---------------- TEXT ---------------- */
+  /* ---------- TEXT ---------- */
 
   p {
-    font-family: var(--font-body);
     font-size: 15px;
     line-height: 1.6;
     color: var(--slate);
   }
 
   label {
-    font-family: var(--font-body);
     font-size: 14px;
     font-weight: var(--font-weight-medium);
   }
 
   button {
-    font-family: var(--font-body);
     font-size: 14px;
     font-weight: 600;
   }
@@ -265,16 +226,32 @@
   input,
   textarea,
   select {
-    font-family: var(--font-body);
     font-size: 14px;
-    font-weight: var(--font-weight-normal);
   }
 }
+
+/* =====================================================
+LAYOUT UTILITIES
+===================================================== */
+
+.container-page {
+  max-width: var(--page-max);
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =====================================================
+ANIMATIONS
+===================================================== */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

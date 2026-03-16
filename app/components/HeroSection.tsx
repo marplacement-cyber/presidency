@@ -1,176 +1,173 @@
-"use client";
-
-import { ArrowRight, Download, ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
-
-const slides = [
-  {
-    title: "YOUR WORLD-CLASS EDUCATION",
-    highlight: "STARTS IN BANGALORE",
-    desc: (
-      <>
-        Study at Presidency University, one of India’s leading private
-        universities
-        <br />
-        located in the heart of Bangalore — the Silicon Valley of India.
-      </>
-    ),
-    image: "/img/slider/2.jpg",
-  },
-  {
-    title: "A GLOBAL CAMPUS FOR",
-    highlight: "INTERNATIONAL STUDENTS",
-    desc: (
-      <>
-        Join a vibrant community of students from around the world
-        <br />
-        and experience world-class teaching and global opportunities.
-      </>
-    ),
-    image: "/img/slider/1.jpg",
-  },
-  {
-    title: "BUILD YOUR FUTURE IN",
-    highlight: "INDIA'S TECH CAPITAL",
-    desc: (
-      <>
-        Located in Bangalore — home to global companies
-        <br />
-        like Amazon, Google, Microsoft and Infosys.
-      </>
-    ),
-    image: "/img/slider/1.jpg",
-  },
-];
+import { ArrowRight, Play } from "lucide-react";
+import { motion } from "motion/react";
+import { useState } from "react";
 
 export function HeroSection() {
-  const [current, setCurrent] = useState(0);
+  const [videoError, setVideoError] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
+  const stats = [
+    { value: "100+", label: "Programmes" },
+    { value: "10", label: "Schools" },
+    { value: "50+", label: "Student Clubs" },
+    { value: "100-Acre", label: "Campus" },
+  ];
 
   return (
-    <section className="relative mt-16.5 md:mt-0 h-[75vh] md:h-[90vh] overflow-hidden group">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === current ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {/* Background */}
+    <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        {!videoError ? (
+          <>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover scale-105"
+              onError={() => setVideoError(true)}
+              poster="https://images.unsplash.com/photo-1769905226788-1bf5ba8f50d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwY2FtcHVzJTIwc3R1ZGVudHMlMjB3YWxraW5nfGVufDF8fHx8MTc3MzM5ODc4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            >
+              <source
+                src="https://cdn.coverr.co/videos/coverr-students-walking-on-campus-8290/1080p.mp4"
+                type="video/mp4"
+              />
+              <source
+                src="https://cdn.coverr.co/videos/coverr-university-students-studying-together-5237/1080p.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </>
+        ) : (
+          <img
+            src="https://images.unsplash.com/photo-1769905226788-1bf5ba8f50d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwY2FtcHVzJTIwc3R1ZGVudHMlMjB3YWxraW5nfGVufDF8fHx8MTc3MzM5ODc4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="University Campus"
+            className="w-full h-full object-cover"
+          />
+        )}
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1E3D]/95 via-[#0F1E3D]/85 to-[#0F1E3D]/75"></div>
+
+        {/* Animated Overlay Pattern */}
+        <div className="absolute inset-0 opacity-10">
           <div
-            className="absolute inset-0 bg-cover bg-center scale-105 transition-transform duration-[6000ms]"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          />
-
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-
-          {/* Content */}
-          <div className="relative z-10 h-full flex items-center px-6 md:px-20">
-            <div className="max-w-xl md:max-w-3xl text-white">
-              {/* Tag */}
-              <span className="uppercase tracking-widest text-xs md:text-sm text-orange-400">
-                Admissions Open 2026
-              </span>
-
-              {/* Heading */}
-              <h1 className="mt-3 font-heading text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-tight">
-                {slide.title}
-                <br />
-                <span className="text-orange-400">{slide.highlight}</span>
-              </h1>
-
-              {/* Description */}
-              <p className="mt-4 md:mt-6 text-sm md:text-lg text-white/80 leading-relaxed">
-                {slide.desc}
-              </p>
-
-              {/* Buttons */}
-              <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 md:gap-4">
-                <button className="bg-[#ff8c42] hover:bg-[#e67a32] px-6 md:px-8 py-3 md:py-4 rounded-full flex items-center justify-center gap-2 transition">
-                  Apply Now
-                  <ArrowRight size={18} />
-                </button>
-
-                <button className="border border-white/40 hover:bg-white/10 px-6 md:px-8 py-3 md:py-4 rounded-full flex items-center justify-center gap-2 transition">
-                  Download Brochure
-                  <Download size={18} />
-                </button>
-              </div>
-
-              {/* Stats */}
-              <div className="mt-6 md:mt-10 flex flex-wrap gap-6 md:gap-10 text-sm text-white/80">
-                <div>
-                  <p className="text-xl md:text-2xl font-heading text-white">
-                    150+
-                  </p>
-                  <p className="text-white">Programs</p>
-                </div>
-
-                <div>
-                  <p className="text-xl md:text-2xl font-heading text-white">
-                    300+
-                  </p>
-                  <p className="text-white">Recruiters</p>
-                </div>
-
-                <div>
-                  <p className="text-xl md:text-2xl font-heading text-white">
-                    50K+
-                  </p>
-                  <p className="text-white">Students</p>
-                </div>
-              </div>
-            </div>
-          </div>
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+              backgroundSize: "40px 40px",
+            }}
+          ></div>
         </div>
-      ))}
-
-      {/* Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 
-        bg-white/10 hover:bg-white/30 backdrop-blur p-2 md:p-3 rounded-full
-        opacity-0 group-hover:opacity-100 transition"
-      >
-        <ChevronLeft className="text-white" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 
-        bg-white/10 hover:bg-white/30 backdrop-blur p-2 md:p-3 rounded-full
-        opacity-0 group-hover:opacity-100 transition"
-      >
-        <ChevronRight className="text-white" />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2 md:w-3 h-2 md:h-3 rounded-full ${
-              current === i ? "bg-orange-400" : "bg-white/40"
-            }`}
-          />
-        ))}
       </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-5 md:px-10 w-full">
+        <div className="max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-block bg-[#0A8F96]/20 border border-[#0A8F96]/50 backdrop-blur-sm px-4 py-2 rounded-full mb-6"
+          >
+            <span className="text-[#D4A843] text-sm font-medium">
+              🌍 Ranked Among India's Top Private Universities
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-white mb-6 text-5xl md:text-6xl lg:text-7xl"
+          >
+            Your World-Class Education Starts in Bangalore
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl text-white/90 mb-4"
+          >
+            Study at Presidency University, Bangalore — where global education
+            meets India's Silicon Valley.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-lg text-white/80 mb-10 max-w-3xl"
+          >
+            Discover world-class education on our 100-acre campus, with
+            cutting-edge facilities, international faculty, and partnerships
+            with leading universities across the globe.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-wrap gap-4 mb-16"
+          >
+            <button className="bg-[#0A8F96] text-white px-8 py-4 rounded-lg hover:bg-[#0BB5B5] transition-all duration-300 hover:shadow-xl hover:scale-105 flex items-center gap-2 text-lg">
+              Explore Programmes
+              <ArrowRight size={22} />
+            </button>
+            <button className="bg-white text-[#0F1E3D] px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:shadow-xl hover:scale-105 text-lg">
+              How to Apply
+            </button>
+            <button className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg backdrop-blur-sm">
+              <Play size={20} />
+              Watch Video Tour
+            </button>
+          </motion.div>
+
+          {/* Floating Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                className="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-6 text-center hover:bg-white/15 hover:border-white/50 transition-all duration-300 hover:scale-105"
+              >
+                <div
+                  className="text-4xl md:text-5xl font-semibold text-[#D4A843] mb-2"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-sm md:text-base text-white/90 font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      >
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1.5 h-1.5 bg-white rounded-full"
+          ></motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 }

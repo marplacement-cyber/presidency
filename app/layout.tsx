@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Outfit, Geist } from "next/font/google";
 import "./globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 /* ---------------- FONTS ---------------- */
 
@@ -36,7 +37,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(headingFont.variable, bodyFont.variable, "font-sans", geist.variable)}>
+    <html
+      lang="en"
+      className={cn(
+        headingFont.variable,
+        bodyFont.variable,
+        "font-sans",
+        geist.variable,
+      )}
+    >
       <body className="antialiased font-body bg-background text-foreground">
         {children}
       </body>
