@@ -1,119 +1,70 @@
-import {
-  BookOpen,
-  Briefcase,
-  FlaskConical,
-  Plane,
-  ArrowRight,
-} from "lucide-react";
+import { Search } from "lucide-react";
 import { motion } from "motion/react";
 
 export function ProgrammesSection() {
   const programmes = [
-    {
-      icon: <BookOpen size={48} />,
-      title: "Undergraduate Degrees",
-      description:
-        "Bachelor programmes in Engineering, Business, Arts, Science, Law, and Design for aspiring professionals.",
-      cta: "View Undergraduate Programmes",
-      color: "bg-[#0F1E3D]",
-      image:
-        "https://images.unsplash.com/photo-1758270704025-0e1a1793e1ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwc3R1ZGVudHMlMjBncm91cCUyMHN0dWR5aW5nfGVufDF8fHx8MTc3MzM5OTQ1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      icon: <Briefcase size={48} />,
-      title: "Postgraduate Degrees",
-      description:
-        "Master programmes for specialized knowledge and advanced career opportunities across all disciplines.",
-      cta: "View Postgraduate Programmes",
-      color: "bg-[#0A8F96]",
-      image:
-        "https://images.unsplash.com/photo-1731834453355-df041245e7d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21wdXRlciUyMGxhYiUyMHRlY2hub2xvZ3klMjBjbGFzc3Jvb218ZW58MXx8fHwxNzczMzk5NDU1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      icon: <FlaskConical size={48} />,
-      title: "Doctoral Research",
-      description:
-        "PhD programmes for research scholars seeking to advance knowledge and innovation in their fields.",
-      cta: "Explore PhD Programmes",
-      color: "bg-[#0BB5B5]",
-      image:
-        "https://images.unsplash.com/photo-1602052294200-a8b75e03adfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwcmVzZWFyY2glMjBsYWJvcmF0b3J5fGVufDF8fHx8MTc3MzM1MTM3Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      icon: <Plane size={48} />,
-      title: "International Pathways",
-      description:
-        "Dual degree and exchange programmes with partner universities worldwide for global exposure.",
-      cta: "Explore International Programmes",
-      color: "bg-[#D4A843]",
-      image:
-        "https://images.unsplash.com/photo-1770364292883-befec1322e25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnRlcm5hdGlvbmFsJTIwc3R1ZGVudHMlMjBkaXZlcnNlJTIwZ3JvdXB8ZW58MXx8fHwxNzczMzk5NDU2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
+    { title: "Doctoral (PhD)", color: "border-b-[#0A8F96]" },
+    { title: "Postgraduate", color: "border-b-[#D4A843]" },
+    { title: "Undergraduate", color: "border-b-[#0A8F96]" },
+    { title: "Online Degree", color: "border-b-[#D4A843]" },
   ];
 
   return (
-    <section className="py-20 bg-[#FAFAF7]" id="programmes">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-10">
-        <div className="text-center mb-16">
+    <section className="py-24 bg-[#F5F6F8]" id="programmes">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
+        {/* LEFT CONTENT */}
+        <div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[#0F1E3D] mb-4"
+            className="text-[#1B4E8C] text-4xl font-semibold mb-6"
           >
-            Programmes for Every Ambition
+            Find your Degree
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#4A5568] max-w-2xl mx-auto"
+            viewport={{ once: true }}
+            className="text-[#4A5568] max-w-md leading-relaxed"
           >
-            Find the perfect programme to launch your global career
+            Presidency University offers rigorous programmes, valuable
+            resources, and countless opportunities that enable you to pursue
+            your desired course of study.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {programmes.map((programme, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group relative"
-            >
-              {/* Background Image with Overlay */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={programme.image}
-                  alt={programme.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div
-                  className={`absolute inset-0 ${programme.color} opacity-85 group-hover:opacity-75 transition-opacity duration-300`}
-                ></div>
+        {/* RIGHT SIDE */}
+        <div className="space-y-6">
+          {/* DEGREE BOXES */}
+          <div className="grid grid-cols-2 gap-6">
+            {programmes.map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className={`bg-white shadow-md rounded-lg p-8 text-center cursor-pointer border-b-4 ${item.color} hover:shadow-xl transition-all`}
+              >
+                <h3 className="text-[#1B4E8C] font-medium tracking-wide">
+                  {item.title}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
 
-                {/* Icon and Title on Image */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-center items-start text-white">
-                  <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {programme.icon}
-                  </div>
-                  <h3 className="text-white mb-2">{programme.title}</h3>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-8">
-                <p className="text-[#4A5568] mb-6">{programme.description}</p>
-                <button className="flex items-center gap-2 text-[#0A8F96] hover:text-[#0BB5B5] transition-colors group-hover:gap-3 duration-300 bg-transparent border-none p-0">
-                  {programme.cta}
-                  <ArrowRight size={20} />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+          {/* SEARCH */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search by: Keyword  course"
+              className="w-full border border-gray-300 rounded-md py-4 px-5 pr-12 outline-none focus:border-[#0A8F96]"
+            />
+            <Search
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+              size={20}
+            />
+          </div>
         </div>
       </div>
     </section>

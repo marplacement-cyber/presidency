@@ -24,15 +24,20 @@ export function Navigation() {
   }, []);
 
   const leftNavItems = [
-    { label: "About", href: "#why-presidency" },
+    { label: "About", href: "#about" },
     { label: "Academics", href: "#programmes", hasDropdown: true },
     { label: "Admissions", href: "#admissions", hasDropdown: true },
+    { label: "Programmes", href: "#programmes" },
+    { label: "International Students", href: "#international" },
   ];
 
   const rightNavItems = [
     { label: "Campus Life", href: "#campus-life" },
     { label: "Research", href: "#research" },
-    { label: "International", href: "#life-in-bangalore" },
+    { label: "Living in Bangalore", href: "#bangalore" },
+    { label: "Scholarships", href: "#scholarships" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (

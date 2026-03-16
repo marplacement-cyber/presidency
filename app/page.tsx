@@ -10,10 +10,11 @@ import CampusLife from "./components/campus-life";
 import { ProgrammesSection } from "./components/ProgramsSection";
 import { PlacementsSection } from "./components/PlacementsSection";
 import { AccreditationSection } from "./components/accreditation-section";
+import { SchoolsSliderSection } from "./components/SchoolsSliderSection";
 import { LifeAtPresidency } from "./components/InfrastructureSection";
 import { AmenitiesSection } from "./components/AmenitiesSection";
 import { MasterPlanSection } from "./components/MasterPlanSection";
-
+import { InternationalStudentsSection } from "./components/InternationalStudentsSection";
 import { EventsActivitiesSection } from "./components/ProgramSection";
 import { UpcomingEvents } from "./components/FeaturesSection";
 import { CommunitySection } from "./components/CommunitySection";
@@ -24,6 +25,7 @@ import { TestimonialsSection } from "./components/testimonials-section";
 import { AdmissionSection } from "./components/AdmissionSection";
 import { CTASection } from "./components/CTASection";
 import { ScholarshipsSection } from "./components/ScholarshipsSection";
+import { ResearchHighlightsSection } from "./components/ResearchHighlightsSection";
 import { RankingAccreditationSection } from "./components/RankingAccreditationSection";
 import { ApplicationProcess } from "./components/application-process";
 import { FinalCTA } from "./components/final-cta";
@@ -40,13 +42,17 @@ export default function App() {
 
       {/* Program Finder */}
       <ProgramSearch />
-      <WhyPresidency />
+      <RankingAccreditationSection />
+      {/* <WhyPresidency /> */}
       {/* Rankings + Stats */}
       {/* <RankingsStatsSection />
       <ScholarshipsSection />
       <RankingAccreditationSection /> */}
       {/* Programs Overview */}
       <ProgrammesSection />
+      <SchoolsSliderSection />
+      <InternationalStudentsSection />
+      <ResearchHighlightsSection />
       <CampusLife />
       <BangaloreSection />
       {/* Campus Facilities */}
@@ -60,12 +66,12 @@ export default function App() {
       {/* Campus Infrastructure */}
       {/* <LifeAtPresidency /> */}
       {/* Student Life */}
-      {/* <EventsActivitiesSection /> */}
+      <EventsActivitiesSection />
       {/* Placement & Careers */}
       {/* <PlacementsSection /> */}
 
       {/* Events */}
-      {/* <UpcomingEvents /> */}
+      <UpcomingEvents />
 
       {/* Community & Clubs */}
       {/* <CommunitySection /> */}

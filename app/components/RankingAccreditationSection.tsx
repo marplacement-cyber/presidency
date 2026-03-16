@@ -66,7 +66,7 @@ export function RankingAccreditationSection() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-12 object-contain"
+                    className="h-30 object-contain"
                   />
                 </div>
               </div>
