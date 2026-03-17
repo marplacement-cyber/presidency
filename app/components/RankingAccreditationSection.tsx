@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "motion/react";
+
 const accreditations = [
   {
     title: "NAAC Accreditation",
@@ -35,22 +37,41 @@ export function RankingAccreditationSection() {
       <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-[#ff8c42]/10 blur-[120px] rounded-full"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Common Header */}
+        {/* ✅ COMMON HEADER (UPDATED) */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-[#ff8c42]/10 text-[#ff8c42] px-4 py-2 rounded-full text-sm mb-4">
+          {/* Tag */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block bg-[#ff8c42]/10 text-[#ff8c42] px-4 py-2 rounded-full text-sm mb-4"
+          >
             Accreditation & Rankings
-          </span>
+          </motion.span>
 
-          <h2 className="text-3xl md:text-4xl text-[#1e3a5f] leading-tight">
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl text-[#1e3a5f] leading-tight"
+          >
             Recognised for
             <span className="block text-[#ff8c42]">Academic Excellence</span>
-          </h2>
+          </motion.h2>
 
-          <p className="text-gray-600 mt-4 max-w-xl mx-auto  text-sm md:text-lg">
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-gray-600 mt-4 max-w-xl mx-auto text-sm md:text-lg"
+          >
             Presidency University is recognised nationally and internationally
             for its academic quality, research impact, and institutional
             excellence.
-          </p>
+          </motion.p>
         </div>
 
         {/* Accreditation Cards */}
@@ -66,7 +87,7 @@ export function RankingAccreditationSection() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-30 object-contain"
+                    className="h-24 object-contain"
                   />
                 </div>
               </div>

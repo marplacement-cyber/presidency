@@ -1,3 +1,5 @@
+"use client";
+
 import { Search } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -14,26 +16,45 @@ export function ProgrammesSection() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
         {/* LEFT CONTENT */}
         <div>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-block bg-[#0A8F96]/10 text-[#0A8F96] px-4 py-2 rounded-full text-sm mb-4"
+          >
+            Academic Programmes
+          </motion.span>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-[#1B4E8C] text-4xl font-semibold mb-6"
           >
-            Find your Degree
+            Find Your Perfect
+            <span className="block text-[#0A8F96]">Degree Programme</span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-[#4A5568] max-w-md leading-relaxed"
+            className="text-[#4A5568] max-w-md mb-5"
           >
-            Presidency University offers rigorous programmes, valuable
-            resources, and countless opportunities that enable you to pursue
-            your desired course of study.
+            Presidency University offers rigorous academic programmes, global
+            exposure, and industry-driven learning.
           </motion.p>
+          <div className="relative overflow-hidden rounded-xl shadow-lg group">
+            <img
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070"
+              alt="Students"
+              className="w-full h-[220px] object-cover group-hover:scale-105 transition duration-500"
+            />
+
+            {/* OPTIONAL OVERLAY TEXT */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5">
+              <p className="text-white text-sm">
+                Explore campus life and academic excellence
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* RIGHT SIDE */}
@@ -43,12 +64,10 @@ export function ProgrammesSection() {
             {programmes.map((item, index) => (
               <motion.div
                 key={index}
-                whileHover={{ y: -5 }}
-                className={`bg-white shadow-md rounded-lg p-8 text-center cursor-pointer border-b-4 ${item.color} hover:shadow-xl transition-all`}
+                whileHover={{ y: -6 }}
+                className={`bg-white shadow-md rounded-xl p-8 text-center border-b-4 ${item.color}`}
               >
-                <h3 className="text-[#1B4E8C] font-medium tracking-wide">
-                  {item.title}
-                </h3>
+                <h3 className="text-[#1B4E8C] font-medium">{item.title}</h3>
               </motion.div>
             ))}
           </div>
@@ -57,14 +76,16 @@ export function ProgrammesSection() {
           <div className="relative">
             <input
               type="text"
-              placeholder="Search by: Keyword  course"
-              className="w-full border border-gray-300 rounded-md py-4 px-5 pr-12 outline-none focus:border-[#0A8F96]"
+              placeholder="Search by: Keyword or course"
+              className="w-full border border-gray-300 rounded-md py-4 px-5 pr-12"
             />
             <Search
               className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
               size={20}
             />
           </div>
+
+          {/* ✅ NEW IMAGE */}
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { GraduationCap, HandCoins, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 type CounterProps = {
   end: number;
@@ -23,7 +24,7 @@ function Counter({ end, duration = 2000, suffix = "" }: CounterProps) {
         setCount(end);
         clearInterval(counter);
       } else {
-        setCount(Math.floor(start));
+        setCount(start);
       }
     }, 16);
 
@@ -32,7 +33,7 @@ function Counter({ end, duration = 2000, suffix = "" }: CounterProps) {
 
   return (
     <span>
-      {count}
+      {Number.isInteger(end) ? Math.floor(count) : count.toFixed(2)}
       {suffix}
     </span>
   );
@@ -40,30 +41,37 @@ function Counter({ end, duration = 2000, suffix = "" }: CounterProps) {
 
 export function ScholarshipsSection() {
   return (
-    <section className="relative py-28 text-white">
+    <section className="relative py-28 text-white overflow-hidden">
       {/* BACKGROUND */}
       <img
-        src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070"
+        src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070"
         className="absolute inset-0 w-full h-full object-cover"
         alt=""
       />
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-[#0A2E4E]/80"></div>
+      {/* ✅ FIXED OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E4E]/80 via-[#0A2E4E]/60 to-[#0A2E4E]/80"></div>
 
       <div className="relative max-w-[1200px] mx-auto px-6 text-center">
-        {/* TITLE */}
-        <h2 className="text-4xl font-semibold mb-16">
-          Scholarships & Financial Support
-        </h2>
+        {/* ✅ HEADER (COMMON STYLE) */}
+        <div className="mb-16">
+          <span className="inline-block bg-[#ff7a2f]/20 px-4 py-2 rounded-full text-sm mb-4">
+            Scholarships
+          </span>
+
+          <h2 className="text-3xl md:text-4xl font-semibold">
+            Scholarships &
+            <span className="block text-[#ff7a2f]">Financial Support</span>
+          </h2>
+        </div>
 
         {/* COUNTERS */}
         <div className="grid md:grid-cols-3 gap-10 items-center">
           {/* ITEM 1 */}
           <div className="flex flex-col items-center">
-            <GraduationCap size={70} className="text-[#ff7a2f] mb-4" />
+            <GraduationCap size={60} className="text-[#ff7a2f] mb-4" />
 
-            <h3 className="text-5xl font-bold">
+            <h3 className="text-4xl md:text-5xl font-bold">
               <Counter end={600} suffix="+" />
             </h3>
 
@@ -71,10 +79,10 @@ export function ScholarshipsSection() {
           </div>
 
           {/* ITEM 2 */}
-          <div className="flex flex-col items-center border-x border-white/30 px-10">
-            <HandCoins size={70} className="text-[#ff7a2f] mb-4" />
+          <div className="flex flex-col items-center border-x border-white/30 px-6">
+            <HandCoins size={60} className="text-[#ff7a2f] mb-4" />
 
-            <h3 className="text-5xl font-bold">
+            <h3 className="text-4xl md:text-5xl font-bold">
               ₹<Counter end={4.87} suffix=" Cr" />
             </h3>
 
@@ -83,9 +91,9 @@ export function ScholarshipsSection() {
 
           {/* ITEM 3 */}
           <div className="flex flex-col items-center">
-            <Users size={70} className="text-[#ff7a2f] mb-4" />
+            <Users size={60} className="text-[#ff7a2f] mb-4" />
 
-            <h3 className="text-5xl font-bold">
+            <h3 className="text-4xl md:text-5xl font-bold">
               <Counter end={579} suffix="+" />
             </h3>
 
@@ -94,9 +102,12 @@ export function ScholarshipsSection() {
         </div>
 
         {/* CTA */}
-        <button className="mt-16 bg-[#ff7a2f] px-8 py-3 rounded-md hover:bg-[#e46720] transition">
-          View More →
-        </button>
+        <div className="mt-10">
+          <button className="inline-flex items-center gap-2 bg-[#ff8c42] text-white px-7 py-3 rounded-full hover:bg-[#e67932] transition shadow-md hover:shadow-lg">
+            View All Scholarships
+            <ArrowRight size={18} />
+          </button>
+        </div>
       </div>
     </section>
   );

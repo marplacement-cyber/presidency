@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { motion } from "motion/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -46,7 +47,44 @@ export function SchoolsSliderSection() {
   ];
 
   return (
-    <section className="w-full relative  bg-white">
+    <section className=" bg-white">
+      {/* <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+       
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block bg-[#0A8F96]/10 text-[#0A8F96] px-4 py-2 rounded-full text-sm mb-4"
+          >
+            Academic Schools
+          </motion.span>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl text-[#1e3a5f]"
+          >
+            Explore Our
+            <span className="block text-[#0A8F96]">Schools & Departments</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-gray-600 mt-4 max-w-2xl mx-auto"
+          >
+            Presidency University offers diverse academic schools designed to
+            provide industry-relevant knowledge, global exposure, and research
+            opportunities.
+          </motion.p>
+        </div>
+      </div> */}
+
+      {/* ✅ FULL WIDTH SLIDER */}
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
@@ -56,29 +94,35 @@ export function SchoolsSliderSection() {
       >
         {schools.map((school, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[550px] ">
-              {/* Background Image */}
+            <div className="relative h-[550px]">
+              {/* IMAGE */}
               <img
                 src={school.image}
                 alt={school.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/30"></div>
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-black/40"></div>
 
-              {/* Content Box */}
-              <div className="absolute left-10 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md shadow-xl  max-w-[1200px] mx-auto">
-                <div className="bg-[#4C5482] text-white px-8 py-6 text-3xl font-semibold">
-                  {school.title}
-                </div>
+              {/* CONTENT BOX (ALIGNED WITH CONTAINER) */}
+              <div className="absolute inset-0 flex items-center">
+                <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
+                  <div className="bg-white/90 backdrop-blur-md shadow-xl max-w-xl">
+                    {/* TITLE BAR */}
+                    <div className="bg-[#4C5482] text-white px-6 py-4 text-xl md:text-2xl font-semibold">
+                      {school.title}
+                    </div>
 
-                <div className="p-8">
-                  <p className="text-gray-700 mb-6">{school.description}</p>
+                    {/* CONTENT */}
+                    <div className="p-6 md:p-8">
+                      <p className="text-gray-700 mb-6">{school.description}</p>
 
-                  <button className="bg-[#4C5482] text-white px-6 py-3 hover:bg-[#2F3561] transition">
-                    Explore
-                  </button>
+                      <button className="bg-[#4C5482] text-white px-6 py-3 hover:bg-[#2F3561] transition">
+                        Explore
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

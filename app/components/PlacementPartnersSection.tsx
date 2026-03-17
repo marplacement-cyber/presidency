@@ -8,91 +8,132 @@ import {
   DollarSign,
   BarChart,
 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
 
 const companies = [
-  "Amazon",
-  "Deloitte",
-  "Capgemini",
-  "KPMG",
-  "Infosys",
-  "Cognizant",
+  {
+    name: "Amazon",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+  },
+  {
+    name: "Deloitte",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg",
+  },
+  {
+    name: "Capgemini",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg",
+  },
+  {
+    name: "KPMG",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/KPMG_logo.svg",
+  },
+  {
+    name: "Infosys",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg",
+  },
+  {
+    name: "Cognizant",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg",
+  },
 ];
 
 const stats = [
   {
-    icon: <Award size={30} />,
+    icon: <Award size={28} />,
     value: "Top Global Recruiters",
     label: "Amazon, Deloitte, Infosys, KPMG",
   },
   {
-    icon: <TrendingUp size={30} />,
+    icon: <TrendingUp size={28} />,
     value: "300+",
     label: "Industry Recruitment Partners",
   },
   {
-    icon: <Users size={30} />,
-    value: "Dedicated Career Services",
-    label: "Learning & Development Trainers",
+    icon: <Users size={28} />,
+    value: "Career Services",
+    label: "Dedicated Training & Placement",
   },
   {
-    icon: <Briefcase size={30} />,
-    value: "Campus Recruitment",
-    label: "Regular Industry Hiring Drives",
+    icon: <Briefcase size={28} />,
+    value: "Campus Drives",
+    label: "Regular Industry Hiring",
   },
   {
-    icon: <DollarSign size={30} />,
-    value: "Global Career Opportunities",
-    label: "Multinational Companies Recruiting",
+    icon: <DollarSign size={28} />,
+    value: "Global Careers",
+    label: "MNC Opportunities",
   },
   {
-    icon: <BarChart size={30} />,
-    value: "Industry Connected Curriculum",
+    icon: <BarChart size={28} />,
+    value: "Industry Curriculum",
     label: "Internships & Live Projects",
   },
 ];
 
 export function PlacementPartnersSection() {
   return (
-    <section className="py-24 bg-[#f4f7fb]">
-      <div className="max-w-[1400px] mx-auto px-6 text-center">
-        {/* TITLE */}
-        <h2 className="text-4xl font-semibold text-[#0A2E4E] mb-3">
-          Career Outcomes & Industry Partners
-        </h2>
+    <section className="py-24 bg-[#F5F6F8]">
+      <div className="max-w-[1200px] mx-auto px-6 text-center">
+        {/* ✅ COMMON HEADER */}
+        <div className="mb-16">
+          <span className="inline-block bg-[#ff7a2f]/10 text-[#ff7a2f] px-4 py-2 rounded-full text-sm mb-4">
+            Placements & Careers
+          </span>
 
-        <p className="text-xl text-[#ff7a2f] mb-6">
-          Connecting Talent with Global Opportunities
-        </p>
+          <h2 className="text-3xl md:text-4xl text-[#1e3a5f]">
+            Career Outcomes &
+            <span className="block text-[#ff7a2f]">Industry Partners</span>
+          </h2>
 
-        {/* DESCRIPTION */}
-        <p className="max-w-3xl mx-auto text-gray-600 mb-12">
-          Presidency University maintains strong industry connections, enabling
-          students to transition seamlessly from academic learning to
-          professional careers. Global companies regularly participate in campus
-          recruitment drives, offering students exceptional career opportunities
-          across technology, finance, consulting, and innovation sectors.
-        </p>
-
-        {/* COMPANY LOGOS */}
-        <div className="flex flex-wrap justify-center gap-12 mb-14 opacity-80">
-          {companies.map((company, index) => (
-            <span key={index} className="text-xl font-semibold text-gray-700">
-              {company}
-            </span>
-          ))}
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            Presidency University connects students with top global recruiters,
+            ensuring strong career outcomes and industry-ready skills.
+          </p>
         </div>
 
-        {/* STATS GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* ✅ LOGO CAROUSEL */}
+        <Swiper
+          modules={[Autoplay]}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
+          loop
+          spaceBetween={40}
+          slidesPerView={2}
+          breakpoints={{
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 5 },
+          }}
+          className="mb-16"
+        >
+          {companies.map((company, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex justify-center items-center h-16 opacity-80 hover:opacity-100 transition">
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  className="h-8 object-contain grayscale hover:grayscale-0 transition"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* ✅ STATS GRID */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {stats.map((item, index) => (
             <div
               key={index}
-              className="bg-white border rounded-xl p-6 flex items-center gap-4 shadow-sm hover:shadow-lg transition"
+              className="bg-white rounded-xl p-6 flex items-start gap-4 shadow-sm hover:shadow-lg transition"
             >
-              <div className="text-[#0A2E4E]">{item.icon}</div>
+              <div className="text-[#1e3a5f]">{item.icon}</div>
 
               <div className="text-left">
-                <h3 className="text-lg font-semibold text-[#0A2E4E]">
+                <h3 className="text-lg font-semibold text-[#1e3a5f]">
                   {item.value}
                 </h3>
 
@@ -103,9 +144,12 @@ export function PlacementPartnersSection() {
         </div>
 
         {/* CTA */}
-        <button className="bg-[#ff7a2f] text-white px-8 py-3 rounded-md hover:bg-[#e46720] transition">
-          View More
-        </button>
+        <div className="mt-10">
+          <button className="inline-flex items-center gap-2 bg-[#ff8c42] text-white px-7 py-3 rounded-full hover:bg-[#e67932] transition shadow-md hover:shadow-lg">
+            View All Placement
+            <ArrowRight size={18} />
+          </button>
+        </div>
       </div>
     </section>
   );

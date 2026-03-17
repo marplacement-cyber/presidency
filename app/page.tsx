@@ -56,8 +56,9 @@ export default function App() {
       <RankingAccreditationSection /> */}
       {/* Programs Overview */}
       <ProgrammesSection />
-      <BangaloreCTASection />
+
       <SchoolsSliderSection />
+      <BangaloreLifeSection />
       <InternationalStudentsSection />
       <ResearchHighlightsSection />
       {/* <CampusLife /> */}
@@ -65,11 +66,13 @@ export default function App() {
       {/* Campus Facilities */}
       {/* <AmenitiesSection /> */}
       <EventsActivitiesSection />
+      <BangaloreCTASection />
       <PlacementPartnersSection />
       <ScholarshipsSection />
       <NewsSection />
       <InFocusSection />
       <CampusVirtualTourSection />
+      {/* <TestimonialsSection /> */}
       {/* <AccreditationSection />
       <TestimonialsSection />
       <ApplicationProcess /> */}
@@ -103,7 +106,7 @@ export default function App() {
       {/* <CTASection /> */}
 
       {/* Footer */}
-      <BangaloreLifeSection />
+
       <FooterSection />
     </div>
   );

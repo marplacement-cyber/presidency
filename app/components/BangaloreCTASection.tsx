@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 
 export function BangaloreCTASection() {
   return (
@@ -13,57 +14,80 @@ export function BangaloreCTASection() {
       />
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
 
       <div className="relative max-w-[1000px] mx-auto px-6 text-center">
         {/* GLASS CARD */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-xl px-10 py-12 border border-white/20">
-          {/* TITLE */}
-          <h2 className="text-4xl font-semibold mb-4">
-            Study in India’s Silicon Valley
-          </h2>
+        <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-10 py-14 border border-white/20 shadow-2xl">
+          {/* ✅ TAG */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block bg-white/20 text-white px-4 py-2 rounded-full text-sm mb-4"
+          >
+            Life in Bangalore
+          </motion.span>
 
-          <p className="text-lg text-white/80 mb-8">
+          {/* ✅ HEADING */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-semibold mb-4 leading-tight"
+          >
+            Study in India’s
+            <span className="block text-[#ff8c42]">Silicon Valley</span>
+          </motion.h2>
+
+          {/* ✅ DESCRIPTION */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg text-white/80 mb-10 max-w-2xl mx-auto"
+          >
             Bangalore is home to leading global companies and offers exceptional
             opportunities for innovation, technology, entrepreneurship, and
             global careers.
-          </p>
+          </motion.p>
 
           {/* COMPANY LOGOS */}
           <div className="flex flex-wrap justify-center gap-8 items-center mb-10 opacity-90">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-              className="h-8"
+              className="h-8 hover:scale-110 transition"
               alt="Google"
             />
 
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-              className="h-8"
+              className="h-8 hover:scale-110 transition"
               alt="Amazon"
             />
 
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
-              className="h-8"
+              className="h-8 hover:scale-110 transition"
               alt="Microsoft"
             />
 
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg"
-              className="h-8"
+              className="h-8 hover:scale-110 transition"
               alt="Infosys"
             />
 
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Wipro_Primary_Logo_Color_RGB.svg"
-              className="h-8"
+              className="h-8 hover:scale-110 transition"
               alt="Wipro"
             />
           </div>
 
           {/* CTA */}
-          <button className="bg-[#1e3a5f] hover:bg-[#162d49] px-8 py-4 rounded-md flex items-center gap-3 mx-auto transition">
+          <button className="bg-[#ff8c42] hover:bg-[#e6762f] px-8 py-4 rounded-md flex items-center gap-3 mx-auto transition shadow-lg hover:shadow-xl">
             Explore Bangalore Life
             <ArrowRight size={18} />
           </button>
