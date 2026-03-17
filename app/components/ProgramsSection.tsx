@@ -19,23 +19,6 @@ export function ProgrammesSection() {
       <div className="max-w-[1300px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-12 items-center">
         {/* LEFT CONTENT */}
         <div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-[#1B4E8C] text-4xl font-semibold mb-6 leading-tight"
-          >
-            Find Your Perfect
-            <span className="block text-[#0A8F96]">Degree Programme</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-[#4A5568] max-w-md"
-          >
-            Presidency University offers rigorous academic programmes, global
-            exposure, and industry-driven learning.
-          </motion.p>
           <div className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-xl group mt-5">
             <img
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070"
@@ -54,6 +37,23 @@ export function ProgrammesSection() {
 
         {/* RIGHT SIDE */}
         <div className="space-y-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-[#1B4E8C] text-4xl font-semibold mb-6 leading-tight"
+          >
+            Find Your Perfect
+            <span className="block text-[#0A8F96]">Degree Programme</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-[#4A5568] max-w-md"
+          >
+            Presidency University offers rigorous academic programmes, global
+            exposure, and industry-driven learning.
+          </motion.p>
           {/* DEGREE BOXES */}
           <div className="grid grid-cols-2 gap-6">
             {programmes.map((item, index) => (
