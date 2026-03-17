@@ -116,7 +116,7 @@ export function PlacementPartnersSection() {
                 <img
                   src={company.logo}
                   alt={company.name}
-                  className="h-8 object-contain grayscale hover:grayscale-0 transition"
+                  className="h-8 object-contain  transition"
                 />
               </div>
             </SwiperSlide>

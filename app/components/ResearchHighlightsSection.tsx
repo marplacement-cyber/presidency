@@ -24,65 +24,51 @@ export function ResearchHighlightsSection() {
 
   return (
     <section className="py-24 bg-[#EEF1F5]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-        {/* ✅ COMMON HEADER */}
+      <div className="max-w-[1300px] mx-auto px-6 md:px-10">
+        {/* HEADER */}
         <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block bg-[#0A8F96]/10 text-[#0A8F96] px-4 py-2 rounded-full text-sm mb-4"
-          >
+          <motion.span className="inline-block bg-[#0A8F96]/10 text-[#0A8F96] px-4 py-2 rounded-full text-sm mb-4">
             Research & Innovation
           </motion.span>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl text-[#1e3a5f]"
-          >
+          <motion.h2 className="text-3xl md:text-4xl text-[#1e3a5f]">
             Driving Impact Through
             <span className="block text-[#0A8F96]">Research Excellence</span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-gray-600 mt-4 max-w-2xl mx-auto"
-          >
+          <motion.p className="text-gray-600 mt-4 max-w-2xl mx-auto">
             Explore how Presidency University fosters innovation, global
             collaboration, and impactful discoveries.
           </motion.p>
         </div>
 
-        {/* ✅ 2 COLUMN GRID */}
+        {/* 🔥 GRID: 2 CARDS PER ROW */}
         <div className="grid md:grid-cols-2 gap-8">
           {sections.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-2xl transition duration-300"
+              className="flex bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group"
             >
               {/* IMAGE */}
-              <div className="overflow-hidden">
+              <div className="w-1/2 h-[220px] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
 
               {/* TEXT */}
-              <div className={`${item.bg} text-white p-6 h-full`}>
-                <h3 className="text-xl md:text-2xl mb-3">{item.title}</h3>
+              <div
+                className={`${item.bg} text-white w-1/2 p-6 flex flex-col justify-center`}
+              >
+                <h3 className="text-lg md:text-xl mb-2 leading-snug">
+                  {item.title}
+                </h3>
 
-                <p className="text-white/90 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <p className="text-white/90 text-sm mb-4">{item.description}</p>
 
-                <button className="mt-4 border border-white px-4 py-2 text-sm hover:bg-white hover:text-black transition">
+                <button className="bg-white text-[#1e3a5f] px-5 py-2 rounded-full text-sm font-semibold w-fit hover:scale-105 transition">
                   Explore
                 </button>
               </div>

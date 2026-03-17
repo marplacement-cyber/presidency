@@ -2,7 +2,6 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
 import "swiper/css";
@@ -48,54 +47,17 @@ export function SchoolsSliderSection() {
   ];
 
   return (
-    <section className="bg-white">
-      {/* OPTIONAL HEADER */}
-      {/* <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-16">
-        <div className="text-center mb-10">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block bg-[#0A8F96]/10 text-[#0A8F96] px-4 py-2 rounded-full text-sm mb-4"
-          >
-            Academic Schools
-          </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl text-[#1e3a5f]"
-          >
-            Explore Our
-            <span className="block text-[#0A8F96]">Schools & Departments</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-gray-600 mt-4 max-w-2xl mx-auto"
-          >
-            Presidency University offers diverse academic schools designed to
-            provide industry-relevant knowledge, global exposure, and research
-            opportunities.
-          </motion.p>
-        </div>
-      </div> */}
-
-      {/* 🔥 FULL WIDTH SLIDER */}
+    <section className="w-full h-screen">
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
         pagination={{ clickable: true }}
         loop
-        className="w-full"
+        className="w-full h-full"
       >
         {schools.map((school, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[550px]">
+            <div className="relative w-full h-screen">
               {/* IMAGE */}
               <img
                 src={school.image}
@@ -104,13 +66,13 @@ export function SchoolsSliderSection() {
               />
 
               {/* OVERLAY */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              <div className="absolute inset-0 bg-black/50"></div>
 
               {/* CONTENT */}
               <div className="absolute inset-0 flex items-center">
                 <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
                   <div className="bg-white/90 backdrop-blur-lg shadow-xl rounded-2xl overflow-hidden max-w-xl hover:-translate-y-1 transition duration-300">
-                    {/* TITLE BAR */}
+                    {/* TITLE */}
                     <div className="bg-[#1e3a5f] text-white px-6 py-4 text-xl md:text-2xl font-semibold">
                       {school.title}
                     </div>
@@ -119,8 +81,8 @@ export function SchoolsSliderSection() {
                     <div className="p-6 md:p-8">
                       <p className="text-gray-700 mb-6">{school.description}</p>
 
-                      {/* 🔥 PREMIUM BUTTON */}
-                      <button className="bg-gradient-to-r from-[#0A8F96] to-[#0BB5B5] text-white px-7 flex items-center gap-3  py-3 rounded-full text-sm font-semibold shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      {/* BUTTON */}
+                      <button className="bg-gradient-to-r from-[#0A8F96] to-[#0BB5B5] text-white px-7 py-3 flex items-center gap-3 rounded-full text-sm font-semibold shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
                         Explore
                         <ArrowRight size={18} />
                       </button>

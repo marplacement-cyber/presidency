@@ -47,7 +47,7 @@ export default function App() {
       <HeroSection />
 
       {/* Program Finder */}
-      <ProgramSearch />
+      {/* <ProgramSearch /> */}
       <RankingAccreditationSection />
       {/* <WhyPresidency /> */}
       {/* Rankings + Stats */}
