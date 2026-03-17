@@ -1,281 +1,197 @@
-import { useState, useEffect } from "react";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
   Search,
-  Mail,
-  Phone,
   MapPin,
+  Phone,
   Globe,
   ChevronDown,
+  ArrowRight,
 } from "lucide-react";
-import Image from "next/image";
+
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const leftNavItems = [
-    { label: "About", href: "#about" },
-    { label: "Academics", href: "#programmes", hasDropdown: true },
-    { label: "Admissions", href: "#admissions", hasDropdown: true },
-    { label: "Programmes", href: "#programmes" },
-    { label: "International Students", href: "#international" },
-  ];
+  // 🔥 Smooth Hover Handlers
+  const handleMouseEnter = (label: string) => {
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+    }
+    setActiveDropdown(label);
+  };
 
-  const rightNavItems = [
-    { label: "Campus Life", href: "#campus-life" },
-    { label: "Research", href: "#research" },
-    { label: "Living in Bangalore", href: "#bangalore" },
-    { label: "Scholarships", href: "#scholarships" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: "#contact" },
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 350); // smooth delay
+  };
+
+  const navItems = [
+    { label: "About" },
+    { label: "Academics", hasDropdown: true },
+    { label: "Admissions", hasDropdown: true },
+    { label: "Programmes" },
+    { label: "Living in Bangalore" },
+    { label: "Scholarships" },
+    { label: "FAQ" },
+    { label: "Contact" },
   ];
 
   return (
     <>
-      {/* Top Utility Bar */}
-      <div className="bg-[#0F1E3D] text-white h-[40px] relative z-50">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-12 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Left Utility Links */}
-            <div className="flex items-center gap-6">
-              <a
-                href="#bangalore"
-                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline flex items-center gap-1.5"
-              >
-                <MapPin size={12} />
-                <span className="hidden sm:inline">Bangalore, India</span>
-              </a>
-              <a
-                href="tel:+91"
-                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline flex items-center gap-1.5"
-              >
-                <Phone size={12} />
-                <span className="hidden md:inline">Contact</span>
-              </a>
-              <a
-                href="#international"
-                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline flex items-center gap-1.5"
-              >
-                <Globe size={12} />
-                <span className="hidden lg:inline">International Office</span>
-              </a>
-            </div>
+      {/* 🔵 TOP BAR */}
+      <div className="bg-[#0F1E3D] text-white text-xs relative z-50">
+        <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center h-[55px]">
+          <div className="flex gap-6 items-center">
+            <span className="flex items-center gap-1 opacity-80">
+              <MapPin size={12} /> Bangalore, India
+            </span>
+            <span className="flex items-center gap-1 opacity-80">
+              <Phone size={12} /> Contact
+            </span>
+            <span className="flex items-center gap-1 opacity-80">
+              <Globe size={12} /> International Office
+            </span>
+          </div>
 
-            {/* Right Utility Links */}
-            <div className="flex items-center gap-6">
-              <a
-                href="#students"
-                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline hidden md:inline"
-              >
-                Current Students
-              </a>
-              <a
-                href="#alumni"
-                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline hidden lg:inline"
-              >
-                Alumni
-              </a>
-              <a
-                href="#faculty"
-                className="text-white/80 hover:text-white transition-colors text-xs uppercase tracking-wider no-underline hidden lg:inline"
-              >
-                Faculty & Staff
-              </a>
-              <button
-                className="text-white/80 hover:text-white transition-colors"
-                aria-label="Search"
-              >
-                <Search size={16} />
-              </button>
-            </div>
+          <div className="flex items-center gap-6">
+            <span className="hidden md:block opacity-80">Current Students</span>
+            <span className="hidden lg:block opacity-80">Alumni</span>
+            <span className="hidden lg:block opacity-80">Faculty & Staff</span>
+            <Search size={16} className="cursor-pointer opacity-80" />
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
+      {/* ⚪ NAVBAR */}
       <nav
-        className={`sticky top-0 left-0 right-0 z-40 transition-all duration-300 bg-white ${
-          isScrolled ? "shadow-lg" : "shadow-md"
+        className={`sticky top-0 z-40 transition-all ${
+          isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-white"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-8 md:px-12 relative">
-          <div className="flex items-center justify-between h-[85px]">
-            {/* Left Navigation Items */}
-            <div className="hidden lg:flex items-center gap-8 flex-1 justify-end pr-36">
-              {leftNavItems.map((item, index) => (
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex items-center justify-between h-[70px]">
+            {/* LOGO */}
+            <img src="/img/logo.webp" className="h-12" />
+
+            {/* MENU */}
+            <div className="hidden lg:flex items-center gap-8">
+              {navItems.map((item, i) => (
                 <div
-                  key={index}
+                  key={i}
                   className="relative group"
                   onMouseEnter={() =>
-                    item.hasDropdown && setActiveDropdown(item.label)
+                    item.hasDropdown && handleMouseEnter(item.label)
                   }
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  <a
-                    href={item.href}
-                    className="text-[#4A5568] hover:text-[#0A8F96] transition-colors text-sm font-medium tracking-wide no-underline flex items-center gap-1"
-                  >
+                  <span className="text-[#1e3a5f] text-[15px] font-medium cursor-pointer flex items-center gap-1 relative">
                     {item.label}
-                    {item.hasDropdown && (
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform ${activeDropdown === item.label ? "rotate-180" : ""}`}
-                      />
-                    )}
-                  </a>
 
-                  {/* Dropdown Menu */}
-                  {item.hasDropdown && (
-                    <div
-                      className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white border border-gray-200 shadow-xl mt-4 transition-all duration-200 ${
-                        activeDropdown === item.label
-                          ? "opacity-100 visible translate-y-0"
-                          : "opacity-0 invisible -translate-y-2"
-                      }`}
-                    >
-                      <div className="py-2">
-                        <a
-                          href="#"
-                          className="block px-6 py-3 text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline text-sm"
-                        >
-                          {item.label === "Academics"
-                            ? "All Programmes"
-                            : "Undergraduate"}
-                        </a>
-                        <a
-                          href="#"
-                          className="block px-6 py-3 text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline text-sm"
-                        >
-                          {item.label === "Academics"
-                            ? "Schools & Departments"
-                            : "Postgraduate"}
-                        </a>
-                        <a
-                          href="#"
-                          className="block px-6 py-3 text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline text-sm"
-                        >
-                          {item.label === "Academics"
-                            ? "Faculty"
-                            : "International Students"}
-                        </a>
-                      </div>
-                    </div>
-                  )}
+                    {item.hasDropdown && <ChevronDown size={14} />}
+
+                    {/* underline */}
+                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#0A8F96] transition-all duration-300 group-hover:w-full"></span>
+                  </span>
                 </div>
               ))}
-            </div>
 
-            {/* Center Logo - Overlapping Top Bar */}
-            <div className="absolute left-1/2 -translate-x-1/2 -top-3">
-              <a href="#" className="no-underline block">
-                <div className="bg-white px-8 py-3 shadow-lg rounded-b-lg border-t-4 border-[#0A8F96]">
-                  <div className="flex flex-col items-center">
-                    <img
-                      src="/img/logo.webp"
-                      alt="Presidency University"
-                      className="h-20 w-auto"
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            {/* Right Navigation Items */}
-            <div className="hidden lg:flex items-center gap-8 flex-1 pl-12">
-              {rightNavItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  className="text-[#4A5568] hover:text-[#0A8F96] transition-colors text-sm font-medium tracking-wide no-underline"
-                >
-                  {item.label}
-                </a>
-              ))}
-
-              {/* CTA Button */}
-              <button className="ml-4 bg-[#0A8F96] text-white px-7 py-2.5 rounded-md hover:bg-[#0BB5B5] transition-all duration-300 text-sm font-semibold tracking-wide uppercase shadow-md hover:shadow-lg hover:scale-105">
-                Apply Now
+              {/* CTA */}
+              <button className="ml-3 bg-gradient-to-r from-[#0A8F96] to-[#0BB5B5] text-white px-7 py-2.5 rounded-full flex items-center gap-3  text-sm font-semibold shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+                APPLY NOW
+                <ArrowRight size={18} />
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* MOBILE */}
             <button
-              className="lg:hidden p-2 text-[#0F1E3D] relative z-50"
+              className="lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
+        </div>
 
-          {/* Mobile Menu Overlay */}
-          {isMobileMenuOpen && (
-            <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-xl">
-              <div className="px-6 py-6 max-h-[calc(100vh-125px)] overflow-y-auto">
-                <div className="flex flex-col gap-1">
-                  {/* Mobile Logo Spacer */}
-                  <div className="mb-4 pb-4 border-b border-gray-200">
-                    <div className="text-center">
-                      <div
-                        className="text-[#0F1E3D] text-xl font-semibold"
-                        style={{ fontFamily: "var(--font-heading)" }}
-                      >
-                        Presidency University
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Combined Navigation */}
-                  {[...leftNavItems, ...rightNavItems].map((item, index) => (
-                    <a
-                      key={index}
-                      href={item.href}
-                      className="text-[#4A5568] hover:text-[#0A8F96] hover:bg-[#FAFAF7] transition-colors no-underline py-3 px-4 rounded text-sm font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-
-                  {/* Mobile Utility Links */}
-                  <div className="mt-4 pt-4 border-t border-gray-200 flex flex-col gap-2">
-                    <a
-                      href="#students"
-                      className="text-[#4A5568] hover:text-[#0A8F96] transition-colors no-underline py-2 px-4 text-xs uppercase tracking-wider"
-                    >
-                      Current Students
-                    </a>
-                    <a
-                      href="#alumni"
-                      className="text-[#4A5568] hover:text-[#0A8F96] transition-colors no-underline py-2 px-4 text-xs uppercase tracking-wider"
-                    >
-                      Alumni
-                    </a>
-                    <a
-                      href="#faculty"
-                      className="text-[#4A5568] hover:text-[#0A8F96] transition-colors no-underline py-2 px-4 text-xs uppercase tracking-wider"
-                    >
-                      Faculty & Staff
-                    </a>
-                  </div>
-
-                  {/* Mobile CTA */}
-                  <button className="bg-[#0A8F96] text-white px-6 py-3 rounded-md hover:bg-[#0BB5B5] transition-colors w-full mt-6 font-semibold uppercase tracking-wide text-sm">
-                    Apply Now
-                  </button>
-                </div>
-              </div>
+        {/* 🔥 MEGA MENU */}
+        <div
+          onMouseEnter={() =>
+            activeDropdown && handleMouseEnter(activeDropdown)
+          }
+          onMouseLeave={handleMouseLeave}
+          className={`absolute left-0 top-full w-full bg-white shadow-2xl border-t z-30
+          transition-all duration-300 ease-out
+          ${
+            activeDropdown
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-3 pointer-events-none"
+          }`}
+        >
+          <div className="max-w-[1400px] mx-auto px-10 py-10 grid grid-cols-4 gap-10">
+            <div>
+              <h4 className="font-semibold mb-4 text-[#1e3a5f]">Programmes</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>Undergraduate</li>
+                <li>Postgraduate</li>
+                <li>Doctoral</li>
+                <li>Online</li>
+              </ul>
             </div>
-          )}
+
+            <div>
+              <h4 className="font-semibold mb-4 text-[#1e3a5f]">Schools</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>Engineering</li>
+                <li>Management</li>
+                <li>Law</li>
+                <li>Design</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4 text-[#1e3a5f]">Resources</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>Faculty</li>
+                <li>Research</li>
+                <li>Labs</li>
+                <li>Library</li>
+              </ul>
+            </div>
+
+            <div className="bg-[#f8fafc] p-5 rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800"
+                className="rounded-lg mb-4"
+              />
+
+              <h5 className="font-semibold text-[#1e3a5f] mb-2">
+                Explore Academics
+              </h5>
+
+              <p className="text-sm text-gray-600 mb-3">
+                Discover world-class programmes designed for global careers.
+              </p>
+
+              <button className="text-[#0A8F96] font-medium text-sm">
+                View All →
+              </button>
+            </div>
+          </div>
         </div>
       </nav>
     </>

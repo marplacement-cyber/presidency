@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -47,10 +48,10 @@ export function SchoolsSliderSection() {
   ];
 
   return (
-    <section className=" bg-white">
-      {/* <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-       
-        <div className="text-center mb-16">
+    <section className="bg-white">
+      {/* OPTIONAL HEADER */}
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-16">
+        <div className="text-center mb-10">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,9 +83,9 @@ export function SchoolsSliderSection() {
             opportunities.
           </motion.p>
         </div>
-      </div> */}
+      </div>
 
-      {/* ✅ FULL WIDTH SLIDER */}
+      {/* 🔥 FULL WIDTH SLIDER */}
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
@@ -105,21 +106,23 @@ export function SchoolsSliderSection() {
               {/* OVERLAY */}
               <div className="absolute inset-0 bg-black/40"></div>
 
-              {/* CONTENT BOX (ALIGNED WITH CONTAINER) */}
+              {/* CONTENT */}
               <div className="absolute inset-0 flex items-center">
                 <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
-                  <div className="bg-white/90 backdrop-blur-md shadow-xl max-w-xl">
+                  <div className="bg-white/90 backdrop-blur-lg shadow-xl rounded-2xl overflow-hidden max-w-xl hover:-translate-y-1 transition duration-300">
                     {/* TITLE BAR */}
-                    <div className="bg-[#4C5482] text-white px-6 py-4 text-xl md:text-2xl font-semibold">
+                    <div className="bg-[#1e3a5f] text-white px-6 py-4 text-xl md:text-2xl font-semibold">
                       {school.title}
                     </div>
 
-                    {/* CONTENT */}
+                    {/* BODY */}
                     <div className="p-6 md:p-8">
                       <p className="text-gray-700 mb-6">{school.description}</p>
 
-                      <button className="bg-[#4C5482] text-white px-6 py-3 hover:bg-[#2F3561] transition">
+                      {/* 🔥 PREMIUM BUTTON */}
+                      <button className="bg-gradient-to-r from-[#0A8F96] to-[#0BB5B5] text-white px-7 flex items-center gap-3  py-3 rounded-full text-sm font-semibold shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
                         Explore
+                        <ArrowRight size={18} />
                       </button>
                     </div>
                   </div>
