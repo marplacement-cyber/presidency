@@ -41,7 +41,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <Navigation />
+      {/* <Navigation /> */}
 
       {/* Hero Banner */}
       <HeroSection />
@@ -107,7 +107,7 @@ export default function App() {
 
       {/* Footer */}
 
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 }

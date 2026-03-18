@@ -11,7 +11,7 @@ import {
   ChevronDown,
   ArrowRight,
 } from "lucide-react";
-
+import Link from "next/link";
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -159,6 +159,12 @@ export function Navigation() {
             <div>
               <h4 className="font-semibold mb-4 text-[#1e3a5f]">Schools</h4>
               <ul className="space-y-2 text-sm text-gray-600">
+                <Link
+                  href="/schools/computer-science"
+                  className="hover:text-[#0A8F96]"
+                >
+                  Computer Science
+                </Link>
                 <li>Engineering</li>
                 <li>Management</li>
                 <li>Law</li>
