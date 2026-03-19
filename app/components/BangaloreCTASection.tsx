@@ -18,7 +18,7 @@ export function BangaloreCTASection() {
 
       <div className="relative max-w-[1000px] mx-auto px-6 text-center">
         {/* GLASS CARD */}
-        <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-10 py-14 border border-white/20 shadow-2xl">
+        <div className="bg-white/10  rounded-2xl px-10 py-14 border border-white/20 shadow-2xl">
           {/* ✅ TAG */}
           <motion.span
             initial={{ opacity: 0, y: 20 }}

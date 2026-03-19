@@ -10,7 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-white">
         {/* PAGE CONTENT */}
-        <main>{children}</main>
+        <main className="bg-white">{children}</main>
       </body>
     </html>
   );

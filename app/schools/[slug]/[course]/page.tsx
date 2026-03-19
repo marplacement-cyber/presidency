@@ -43,11 +43,11 @@ export default async function CoursePage({
       <CourseHero data={selectedCourse} school={school} />
 
       {/* QUICK INFO */}
-      <CourseQuickBar data={selectedCourse} school={school} />
+      {/* <CourseQuickBar data={selectedCourse} school={school} /> */}
 
       {/* OVERVIEW */}
       <CourseOverview data={selectedCourse} />
-      <CourseCurriculum data={selectedCourse} />
+      {/* <CourseCurriculum data={selectedCourse} /> */}
       <CourseOutcomes data={selectedCourse} />
       {/* 🔥 TABS (NEW SECTION) */}
       {/* <CourseTabs data={selectedCourse} /> */}

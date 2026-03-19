@@ -17,7 +17,7 @@ export default function SchoolFAQ({ data }: any) {
     <section className="py-16 bg-[#ffffff]">
       <div className="max-w-[1400px] mx-auto px-6">
         {/* TITLE */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#1e3a5f] mb-8">
+        <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-10">
           FAQs
         </h2>
 

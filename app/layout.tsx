@@ -5,9 +5,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+/* ✅ IMPORT HERE */
+import { Navigation } from "@/app/components/Navigation";
+import { FooterSection } from "@/app/components/Footer";
 
 /* ---------------- FONTS ---------------- */
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const headingFont = DM_Serif_Display({
   subsets: ["latin"],
@@ -47,7 +51,14 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased font-body bg-background text-foreground">
-        {children}
+        {/* 🔥 GLOBAL NAVBAR */}
+        <Navigation />
+
+        {/* PAGE CONTENT */}
+        <main>{children}</main>
+
+        {/* 🔥 GLOBAL FOOTER */}
+        <FooterSection />
       </body>
     </html>
   );

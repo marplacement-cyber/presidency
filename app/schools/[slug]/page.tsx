@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 // Components
 import SchoolHero from "@/app/components/School/SchoolHero";
 import SchoolAbout from "@/app/components/School/SchoolAbout";
+import VisionMissionSection from "@/app/components/School/VisionMissionSection";
 import SchoolProgramsPreview from "@/app/components/School/SchoolProgramsPreview";
 import SchoolProgramsTable from "@/app/components/School/SchoolProgramsTable";
 import ProgramList from "@/app/components/School/ProgramList";
@@ -35,22 +36,24 @@ export default async function SchoolPage({
       {school.hero && <SchoolHero data={school.hero} />}
 
       {/* 🏫 ABOUT */}
-      {school.about && <SchoolAbout data={school.about} />}
-
-      {/* 🎓 PROGRAM PREVIEW */}
-      {school.programPreview && (
-        <SchoolProgramsPreview data={school.programPreview} />
+      {school.about && <SchoolAbout data={school.about as any} />}
+      {school.visionMission && (
+        <VisionMissionSection data={school.visionMission} />
       )}
+      {/* 🎓 PROGRAM PREVIEW */}
+      {/* {school.programPreview && (
+        <SchoolProgramsPreview data={school.programPreview} />
+      )} */}
 
       {/* 📊 PROGRAM TABLE */}
-      {school.programTable && (
+      {/* {school.programTable && (
         <SchoolProgramsTable data={school.programTable} />
-      )}
+      )} */}
 
       {/* 📚 ALL PROGRAMS */}
-      {/* {school.programs?.length > 0 && (
+      {school.programs?.length > 0 && (
         <ProgramList programs={school.programs} slug={school.slug} />
-      )} */}
+      )}
 
       {/* ❓ FAQ (future) */}
       {school.faq && <SchoolFAQ data={school} />}

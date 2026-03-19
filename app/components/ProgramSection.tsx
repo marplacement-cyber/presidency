@@ -5,25 +5,26 @@ import { Calendar, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
 const eventsData = [
-  {
-    title: "TechBiz – Annual 24-Hour Innovation Challenge",
-    date: "February 2026",
-    image: "https://images.unsplash.com/photo-1503428593586-e225b39bddfe",
-  },
+
   {
     title: "Kaleidoscope – Presidency Cultural Festival",
     date: "March 2026",
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
   },
   {
+    title: "TechBiz – Annual 24-Hour Innovation Challenge",
+    date: "February 2026",
+    image: "img/events/music.png",
+  },
+  {
     title: "Eunoia – Creative Arts Festival",
     date: "April 2026",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865",
+    image: "img/events/girl.png",
   },
   {
     title: "Leadership & Entrepreneurship Summit",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd",
+    image: "img/events/football.png",
   },
 ];
 
@@ -32,7 +33,7 @@ export function EventsActivitiesSection() {
 
   return (
     <section className="py-24 bg-[#F5F6F8]">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px]  mx-auto px-6">
         {/* ✅ COMMON HEADER */}
         <div className="text-center mb-16">
           <motion.span
@@ -69,7 +70,7 @@ export function EventsActivitiesSection() {
         {/* ✅ EVENT GRID */}
         <div className="grid lg:grid-cols-3 gap-8">
           {/* MAIN EVENT */}
-          <div className="lg:col-span-2 relative rounded-3xl overflow-hidden group">
+          <div className="lg:col-span-2  w-full h-[425px] relative rounded-3xl overflow-hidden group">
             <img
               src={activeEvent.image}
               className="w-full h-[420px] object-cover group-hover:scale-110 transition duration-700"

@@ -36,16 +36,18 @@ import { CampusVirtualTourSection } from "./components/CampusVirtualTourSection"
 import { BangaloreCTASection } from "./components/BangaloreCTASection";
 import { FooterSection } from "./components/Footer";
 import { BangaloreLifeSection } from "./components/BangaloreLifeSection";
+import { AboutPresidency } from "./components/AboutPresidency";
 
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <Navigation />
+      {/* <Navigation /> */}
 
       {/* Hero Banner */}
       <HeroSection />
-
+      {/* <about> */}
+      <AboutPresidency />
       {/* Program Finder */}
       {/* <ProgramSearch /> */}
       <RankingAccreditationSection />
@@ -59,13 +61,14 @@ export default function App() {
 
       <SchoolsSliderSection />
       <BangaloreLifeSection />
-      <InternationalStudentsSection />
+
       <ResearchHighlightsSection />
       {/* <CampusLife /> */}
       {/* <BangaloreSection /> */}
       {/* Campus Facilities */}
       {/* <AmenitiesSection /> */}
       <EventsActivitiesSection />
+      <InternationalStudentsSection />
       <BangaloreCTASection />
       <PlacementPartnersSection />
       <ScholarshipsSection />
@@ -107,7 +110,7 @@ export default function App() {
 
       {/* Footer */}
 
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 }

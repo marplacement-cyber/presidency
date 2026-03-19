@@ -92,23 +92,23 @@ export function HeroSection() {
             Study at Presidency University, Bangalore — where 50 years of academic excellence meet India’s most exciting city.
           </motion.p>
 
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg text-white/80 mb-10 max-w-3xl"
           >
             Presidency University, Bangalore, is one of India’s most ambitious private universities — a place where global thinking, cutting-edge research, and a vibrant campus community come together on a lush 100-acre campus in the heart of India’s Silicon Valley. Whether you are arriving from Africa, the Middle East, South-East Asia, Europe, or beyond, you will find a university that is genuinely built to welcome the world.
-          </motion.p>
+          </motion.p> */}
 
-           <motion.p
+           {/* <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg text-white/80 mb-10 max-w-3xl"
           >
             From undergraduate and postgraduate degrees to doctoral research, international exchange programmes, and professional short courses, Presidency University offers a pathway for every ambition — backed by national accreditations, industry-leading placements, and a dedicated Office of International Affairs to support you every step of the way.
-          </motion.p>
+          </motion.p> */}
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

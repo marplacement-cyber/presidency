@@ -19,25 +19,91 @@
       "about": {
         "title": "A Gateway to India’s Tech Ecosystem",
         "content": [
-          "The Presidency School of Computer Science & Engineering is one of the university’s flagship academic divisions, offering a comprehensive portfolio of undergraduate, postgraduate, and doctoral programmes.",
-          "Situated in Bengaluru — India’s technology capital — students gain access to one of the world’s most dynamic tech ecosystems.",
-          "Programmes span AI, Machine Learning, Data Science, Cyber Security, Blockchain, IoT, Big Data, and DevOps engineering."
+          "The Presidency flagship Stats of Computer Science & Tech Engineering is the classroom on the cusp of the country’s innovation and industry.",
+          "The comprehensive curriculum covers AI, Cyber Security, Blockchain, and DevOps with strong industry exposure."
         ],
         "image": "/img/classes/1.jpg",
+
+        "hexagons": [
+          {
+            "type": "text",
+            "text": "Cloud Computing",
+            "icon": "/icons/cloud.svg",
+            "top": "0%",
+            "left": "35%"
+          },
+          {
+            "type": "text",
+            "text": "Newest Research",
+            "icon": "/icons/research.svg",
+            "top": "20%",
+            "left": "70%"
+          },
+          {
+            "type": "text",
+            "text": "Industry Mentorship",
+            "icon": "/icons/mentorship.svg",
+            "top": "55%",
+            "left": "70%"
+          },
+          {
+            "type": "text",
+            "text": "Research Ecosystem",
+            "icon": "/icons/system.svg",
+            "top": "75%",
+            "left": "35%"
+          },
+          {
+            "type": "image",
+            "image": "/img/classes/1.jpg",
+            "top": "55%",
+            "left": "0%"
+          },
+          {
+            "type": "image",
+            "image": "/img/classes/1.jpg",
+            "top": "20%",
+            "left": "0%"
+          }
+        ],
         "features": [
           {
-            "title": "Bar Council of India Approved",
-            "description": "All law degrees are approved by BCI ensuring quality education."
+            "title": "Advanced AI & Computing Labs",
+            "description": "Access high-performance GPU clusters and AI tools."
           },
           {
-            "title": "Moot Courts & Legal Clinics",
-            "description": "Hands-on legal training through simulations and real cases."
+            "title": "Global Faculty Mentorship",
+            "description": "Learn from global experts."
           },
           {
-            "title": "Specialisation Tracks",
-            "description": "Corporate law, international law, and more."
+            "title": "Industry Partnerships",
+            "description": "Collaborations with AWS, Azure, Google Cloud."
           }
         ]
+      },
+      "visionMission": {
+        "vision": {
+          "title": "Vision",
+          "description": "To be a value-based, practice-driven school catalyzing progress and nurturing global professionals.",
+          "points": [
+            "Practice-driven and preferred programs",
+            "Mission to AI & Cyber Security",
+            "Mission for life and career direction",
+            "Mission to innovators and transformation",
+            "Research-led Computer Science Engineering"
+          ]
+        },
+        "mission": {
+          "title": "Mission",
+          "description": "To empower students with cutting-edge knowledge and industry-ready skills.",
+          "points": [
+            "Deliver industry-aligned curriculum",
+            "Encourage innovation and research",
+            "Build ethical and responsible engineers",
+            "Promote global exposure",
+            "Enhance employability and leadership"
+          ]
+        }
       },
       "programPreview": {
         "title": "About the School of Law",

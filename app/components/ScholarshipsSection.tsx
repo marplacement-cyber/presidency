@@ -44,7 +44,7 @@ export function ScholarshipsSection() {
     <section className="relative py-28 text-white overflow-hidden">
       {/* BACKGROUND */}
       <img
-        src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070"
+        src="img/scholarships.png"
         className="absolute inset-0 w-full h-full object-cover"
         alt=""
       />

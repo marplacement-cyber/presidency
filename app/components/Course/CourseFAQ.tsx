@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 export default function CourseFAQ({ data }: any) {
   const faqs = data?.faq || [];
@@ -13,58 +14,56 @@ export default function CourseFAQ({ data }: any) {
   };
 
   return (
-    <section className="max-w-[1400px] mx-auto px-6 py-16">
-      {/* Heading */}
-      <div className="mb-10">
-        <p className="text-sm uppercase tracking-widest text-teal-600 font-semibold">
-          Have Questions?
-        </p>
-        <h2 className="text-3xl font-serif text-gray-900 mt-2">
+    <section className="bg-[#fff] py-16">
+      <div className="max-w-[1400px] mx-auto px-6">
+        {/* HEADING */}
+        <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-8">
           Frequently Asked Questions
         </h2>
-      </div>
 
-      {/* FAQ List */}
-      <div className="space-y-4">
-        {faqs.map((item: any, index: number) => {
-          const isOpen = index === openIndex;
+        {/* FAQ LIST */}
+        <div className="space-y-3">
+          {faqs.map((item: any, index: number) => {
+            const isOpen = index === openIndex;
 
-          return (
-            <div
-              key={index}
-              className={`border rounded-xl transition-all ${
-                isOpen ? "border-teal-500" : "border-gray-200"
-              }`}
-            >
-              {/* Question */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center px-5 py-4 text-left"
-              >
-                <span className="font-medium text-gray-900">{item.q}</span>
-
-                <span
-                  className={`text-teal-500 text-xl transition-transform ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                >
-                  ▾
-                </span>
-              </button>
-
-              {/* Answer */}
+            return (
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  isOpen ? "max-h-40 px-5 pb-4" : "max-h-0"
+                key={index}
+                className={`bg-white border border-gray-200 rounded-lg transition ${
+                  isOpen ? "shadow-sm" : ""
                 }`}
               >
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.a}
-                </p>
+                {/* QUESTION */}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex justify-between items-center px-5 py-4 text-left"
+                >
+                  <span className="font-medium text-gray-900 text-sm">
+                    {item.q}
+                  </span>
+
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* ANSWER */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-40 border-t px-5 py-4" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.a}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

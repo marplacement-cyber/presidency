@@ -16,14 +16,14 @@ export function BangaloreLifeSection() {
       title: "Global Technology Hub",
       subtitle: "Home to Google, Microsoft & Amazon",
       image:
-        "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=2070",
+        "img/bang-life/hub.png",
       large: true,
     },
     {
       title: "Startup Capital of India",
       subtitle: "Thousands of innovation-driven startups",
       image:
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2070",
+        "img/bang-life/startup.png",
     },
     {
       title: "World-Class Career Opportunities",
