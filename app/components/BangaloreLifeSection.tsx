@@ -29,13 +29,13 @@ export function BangaloreLifeSection() {
       title: "World-Class Career Opportunities",
       subtitle: "Multinational companies and global careers",
       image:
-        "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070",
+        "img/bang-life/world.png",
     },
     {
       title: "Culture & Lifestyle",
       subtitle: "A vibrant international student city",
       image:
-        "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2070",
+        "img/bang-life/life.png",
       wide: true,
     },
     {

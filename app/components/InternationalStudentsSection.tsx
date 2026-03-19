@@ -7,7 +7,7 @@ export function InternationalStudentsSection() {
     <section className="relative h-[520px] w-full overflow-hidden group">
       {/* BACKGROUND */}
       <img
-        src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070"
+        src="img/int-stud.png"
         alt="International Students"
         className="absolute inset-0 w-full h-full object-cover"
       />

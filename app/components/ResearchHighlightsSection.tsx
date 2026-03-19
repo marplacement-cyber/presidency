@@ -9,7 +9,7 @@ export function ResearchHighlightsSection() {
       description:
         "Presidency University is committed to building a globally connected research culture. The Research & Innovation Council oversees academic and sponsored research.",
       image:
-        "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070",
+        "img/innovation.png",
       bg: "bg-[#1565A8]",
     },
     {
@@ -17,7 +17,7 @@ export function ResearchHighlightsSection() {
       description:
         "International scholars benefit from advanced labs, seed funding, and global partnerships to solve real-world challenges.",
       image:
-        "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070",
+        "img/global.png",
       bg: "bg-[#0B3551]",
     },
   ];
@@ -50,11 +50,11 @@ export function ResearchHighlightsSection() {
               className="flex bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group"
             >
               {/* IMAGE */}
-              <div className="w-1/2 h-[220px] overflow-hidden">
+              <div className="w-1/2 h-[290px] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  className="w-100px h-200px object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
 
