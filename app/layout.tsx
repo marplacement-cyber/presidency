@@ -4,8 +4,6 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { cn } from "@/lib/utils";
-import { Navigation } from "./components/Navigation";
-import { FooterSection } from "./components/Footer";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -49,14 +47,7 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased font-body bg-background text-foreground">
-        {/* GLOBAL NAV */}
-        <Navigation />
-
-        {/* PAGE CONTENT */}
-        <main>{children}</main>
-
-        {/* GLOBAL FOOTER */}
-        <FooterSection />
+        {children}
       </body>
     </html>
   );

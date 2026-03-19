@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 
 export function ProgrammesSection() {
   const programmes = [
-    { title: "Doctoral (PhD)", color: "border-b-[#0A8F96]" },
-    { title: "Postgraduate", color: "border-b-[#D4A843]" },
     { title: "Undergraduate", color: "border-b-[#0A8F96]" },
-    { title: "Online Degree", color: "border-b-[#D4A843]" },
+    { title: "Doctoral (PhD)", color: "border-b-[#D4A843]" },
+    { title: "Postgraduate", color: "border-b-[#0A8F96]" },
+    { title: "International Pathways", color: "border-b-[#D4A843]" },
   ];
 
   return (
@@ -21,9 +21,9 @@ export function ProgrammesSection() {
         <div>
           <div className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-xl group mt-5">
             <img
-              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070"
+              src="img/bang-coll.png"
               alt="Students"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              className="w-full h-full object-cover transition duration-500"
             />
 
             {/* OVERLAY */}

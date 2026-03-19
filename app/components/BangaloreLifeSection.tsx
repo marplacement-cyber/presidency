@@ -42,7 +42,7 @@ export function BangaloreLifeSection() {
       title: "Innovation & Entrepreneurship",
       subtitle: "Dynamic ecosystem for startups and research",
       image:
-        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070",
+        "img/bang-life/innovation.png",
     },
   ];
 

@@ -63,7 +63,7 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 md:px-10 w-full">
         <div className="max-w-4xl">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -72,7 +72,7 @@ export function HeroSection() {
             <span className="text-[#D4A843] text-sm font-medium">
               🌍 Ranked Among India's Top Private Universities
             </span>
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -89,8 +89,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/90 mb-4"
           >
-            Study at Presidency University, Bangalore — where global education
-            meets India's Silicon Valley.
+            Study at Presidency University, Bangalore — where 50 years of academic excellence meet India’s most exciting city.
           </motion.p>
 
           <motion.p
@@ -99,9 +98,16 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg text-white/80 mb-10 max-w-3xl"
           >
-            Discover world-class education on our 100-acre campus, with
-            cutting-edge facilities, international faculty, and partnerships
-            with leading universities across the globe.
+            Presidency University, Bangalore, is one of India’s most ambitious private universities — a place where global thinking, cutting-edge research, and a vibrant campus community come together on a lush 100-acre campus in the heart of India’s Silicon Valley. Whether you are arriving from Africa, the Middle East, South-East Asia, Europe, or beyond, you will find a university that is genuinely built to welcome the world.
+          </motion.p>
+
+           <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-lg text-white/80 mb-10 max-w-3xl"
+          >
+            From undergraduate and postgraduate degrees to doctoral research, international exchange programmes, and professional short courses, Presidency University offers a pathway for every ambition — backed by national accreditations, industry-leading placements, and a dedicated Office of International Affairs to support you every step of the way.
           </motion.p>
 
           <motion.div
@@ -119,7 +125,7 @@ export function HeroSection() {
             </button>
             <button className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg backdrop-blur-sm">
               <Play size={20} />
-              Watch Video Tour
+              Contact the OIA
             </button>
           </motion.div>
 

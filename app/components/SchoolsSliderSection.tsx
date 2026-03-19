@@ -14,35 +14,35 @@ export function SchoolsSliderSection() {
       description:
         "Offers UG, PG and PhD programmes in Artificial Intelligence, Data Science, Cyber Security, Blockchain and Robotics.",
       image:
-        "https://images.unsplash.com/photo-1581091215367-59ab6b8c4b95?q=80&w=2070",
+        "img/cse.png",
     },
     {
       title: "School of Engineering",
       description:
         "Engineering programmes in Electronics, Electrical, Civil, Mechanical, Petroleum and VLSI technologies.",
       image:
-        "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=2070",
+        "img/school-eng.png",
     },
     {
       title: "School of Management",
       description:
         "Business education including BBA, MBA and doctoral research across finance, marketing and analytics.",
       image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
+        "img/mang.png",
     },
     {
       title: "School of Design",
       description:
         "Creative design programmes including product design, fashion design, game design and multimedia.",
       image:
-        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070",
+        "img/media.png",
     },
     {
       title: "School of Law",
       description:
         "Integrated BA LLB, BBA LLB and LLM programmes with moot court training and legal research.",
       image:
-        "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+        "img/law.png",
     },
   ];
 
