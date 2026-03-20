@@ -81,7 +81,10 @@ export default function SchoolAbout({ data }: SchoolAboutProps) {
               ))}
 
               {/* CENTER IMAGE (HEX STYLE) */}
-              <div className="absolute top-[35%] left-[32%] w-[120px] h-[110px] hex border-4 border-white shadow-lg overflow-hidden">
+              <div
+                className="absolute left-1/2 w-[160px] h-[150px] -translate-x-1/2 hex border-4 border-white shadow-lg overflow-hidden"
+                style={{ top: "95px" }}
+              >
                 <img
                   src={data.image || "/img/classes/1.jpg"}
                   className="w-full h-full object-cover"
